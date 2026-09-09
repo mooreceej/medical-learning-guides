@@ -262,7 +262,8 @@
           .filter(file =>
             file.type === "file" &&
             /\.html$/i.test(file.name) &&
-            file.name.toLowerCase() !== "index.html"
+            file.name.toLowerCase() !== "index.html" &&
+            !prettify(file.name).toLowerCase().includes("ischemic heart disease")
           )
           .sort((a, b) => prettify(a.name).localeCompare(prettify(b.name)));
 

@@ -1,54 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CJ's Medical Learning Guides</title>
-
   <style>
-    * {
-      box-sizing: border-box;
+    :root {
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --text: #162033;
+      --muted: #64748b;
+      --line: #e6eaf0;
+      --accent: #2563eb;
+      --accent-dark: #1d4ed8;
     }
+
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f5f7fa;
-      color: #1f2937;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
     }
 
     header {
-      background: #ffffff;
-      border-bottom: 1px solid #e5e7eb;
-      padding: 50px 20px;
+      background: white;
+      border-bottom: 1px solid var(--line);
+      padding: 48px 20px 40px;
       text-align: center;
     }
 
     header h1 {
-      margin: 0 0 10px;
-      font-size: 2.4rem;
+      margin: 0 0 8px;
+      font-size: clamp(2rem, 5vw, 3rem);
+      letter-spacing: -0.03em;
     }
 
     header p {
       margin: 0;
-      color: #6b7280;
-      font-size: 1.1rem;
+      color: var(--muted);
+      font-size: 1.05rem;
     }
 
     main {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 20px;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 34px 20px 64px;
     }
 
-    .exam-section {
-      margin-bottom: 45px;
+    .topbar {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
     }
 
-    .exam-title {
+    .section-title {
+      margin: 0;
       font-size: 1.6rem;
-      margin-bottom: 20px;
+    }
+
+    .count {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 4px;
+    }
+
+    .search {
+      width: min(360px, 100%);
+      padding: 12px 14px;
+      border: 1px solid #cfd6df;
+      border-radius: 10px;
+      font-size: 1rem;
+      background: white;
+      outline: none;
+    }
+
+    .search:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
     }
 
     .grid {
@@ -58,238 +92,197 @@
     }
 
     .card {
-      background: white;
-      border-radius: 14px;
-      padding: 24px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.07);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.10);
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+      display: flex;
+      flex-direction: column;
+      min-height: 180px;
     }
 
     .card h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      color: #6b7280;
-      line-height: 1.5;
-    }
-
-    .button {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 11px 18px;
-      background: #2563eb;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-
-    .button:hover {
-      background: #1d4ed8;
-    }
-
-    footer {
-      text-align: center;
-      color: #9ca3af;
-      padding: 35px 20px;
-    }
-  </style>
-</head>
-
-<body>
-
-<header>
-  <h1>🩺 CJ's Medical Learning Guides</h1>
-  <p>Interactive Learning Labs for Medical School</p>
-</header>
-
-<main>
-
-  <section class="exam-section">
-
-    <h2 class="exam-title">🫀 Cardio-Pulmonary — Exam 3</h2>
-
-    <div class="grid">
-
-      <div class="card">
-        <h3>Aortic & Peripheral Arterial Disease</h3>
-
-        <p>
-          Aortic aneurysm, dissection, peripheral arterial disease,
-          clinical reasoning, comparisons, and exam review.
-        </p>
-
-        <a
-          class="button"
-          href="Aortic_Peripheral_Arterial_Diseases_Learning_Lab.html">
-          Open Learning Lab →
-        </a>
-
-      </div>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>CJ's Medical Learning Guides</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f5f7fa;
-      color: #1f2937;
-    }
-
-    header {
-      background: #ffffff;
-      border-bottom: 1px solid #e5e7eb;
-      padding: 50px 20px;
-      text-align: center;
-    }
-
-    header h1 {
       margin: 0 0 10px;
-      font-size: 2.4rem;
-    }
-
-    header p {
-      margin: 0;
-      color: #6b7280;
-      font-size: 1.1rem;
-    }
-
-    main {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    .exam-section {
-      margin-bottom: 45px;
-    }
-
-    .exam-title {
-      font-size: 1.6rem;
-      margin-bottom: 20px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 18px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 14px;
-      padding: 24px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.07);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.10);
-    }
-
-    .card h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
+      font-size: 1.16rem;
+      line-height: 1.3;
     }
 
     .card p {
-      color: #6b7280;
-      line-height: 1.5;
+      margin: 0 0 18px;
+      color: var(--muted);
+      line-height: 1.55;
+      flex: 1;
     }
 
     .button {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 11px 18px;
-      background: #2563eb;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      padding: 11px 16px;
+      background: var(--accent);
       color: white;
       text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
+      border-radius: 9px;
+      font-weight: 700;
     }
 
     .button:hover {
-      background: #1d4ed8;
+      background: var(--accent-dark);
+    }
+
+    .status {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 22px;
+      color: var(--muted);
+    }
+
+    .tip {
+      margin-top: 26px;
+      padding: 15px 16px;
+      background: #eef4ff;
+      border: 1px solid #d8e5ff;
+      border-radius: 12px;
+      color: #334155;
+      line-height: 1.5;
     }
 
     footer {
       text-align: center;
-      color: #9ca3af;
-      padding: 35px 20px;
+      color: #94a3b8;
+      padding: 24px 20px 44px;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 640px) {
+      header { padding-top: 36px; }
+      main { padding-top: 26px; }
+      .topbar { align-items: stretch; }
+      .search { width: 100%; }
     }
   </style>
 </head>
-
 <body>
+  <header>
+    <h1>🩺 CJ's Medical Learning Guides</h1>
+    <p>Your interactive study library</p>
+  </header>
 
-<header>
-  <h1>🩺 CJ's Medical Learning Guides</h1>
-  <p>Interactive Learning Labs for Medical School</p>
-</header>
-
-<main>
-
-  <section class="exam-section">
-
-    <h2 class="exam-title">🫀 Cardio-Pulmonary — Exam 3</h2>
-
-    <div class="grid">
-
-      <div class="card">
-        <h3>Aortic & Peripheral Arterial Disease</h3>
-
-        <p>
-          Aortic aneurysm, dissection, peripheral arterial disease,
-          clinical reasoning, comparisons, and exam review.
-        </p>
-
-        <a
-          class="button"
-          href="Aortic_Peripheral_Arterial_Diseases_Learning_Lab.html">
-          Open Learning Lab →
-        </a>
-
+  <main>
+    <div class="topbar">
+      <div>
+        <h2 class="section-title">🫀 Cardio-Pulmonary Learning Labs</h2>
+        <div class="count" id="count">Loading guides…</div>
       </div>
-
+      <input
+        id="search"
+        class="search"
+        type="search"
+        placeholder="Search learning guides…"
+        aria-label="Search learning guides"
+      />
     </div>
 
-  </section>
-
-</main>
-
-<footer>
-  CJ's Medical Learning Guide Library
-</footer>
-
-</body>
-</html>
+    <div id="guideGrid" class="grid">
+      <div class="status">Loading your Learning Labs…</div>
     </div>
 
-  </section>
+    <div class="tip">
+      <strong>Easy workflow:</strong> upload any new <code>.html</code> Learning Lab to this GitHub repository and it will appear on this page automatically. No editing this homepage.
+    </div>
+  </main>
 
-</main>
+  <footer>CJ's Medical Learning Guide Library</footer>
 
-<footer>
-  CJ's Medical Learning Guide Library
-</footer>
+  <script>
+    const owner = "mooreceej";
+    const repo = "medical-learning-guides";
+    const grid = document.getElementById("guideGrid");
+    const count = document.getElementById("count");
+    const search = document.getElementById("search");
+    let guides = [];
 
+    function prettify(filename) {
+      return filename
+        .replace(/\.html$/i, "")
+        .replace(/\s*\(\d+\)\s*$/, "")
+        .replace(/[_-]+/g, " ")
+        .replace(/\bLearning Lab\b/gi, "")
+        .replace(/\s+/g, " ")
+        .trim()
+        .replace(/\b\w/g, c => c.toUpperCase());
+    }
+
+    function render(list) {
+      grid.innerHTML = "";
+
+      if (!list.length) {
+        grid.innerHTML = '<div class="status">No matching Learning Labs found.</div>';
+        count.textContent = "0 guides";
+        return;
+      }
+
+      count.textContent = `${list.length} guide${list.length === 1 ? "" : "s"}`;
+
+      list.forEach(file => {
+        const title = prettify(file.name);
+        const card = document.createElement("article");
+        card.className = "card";
+
+        const heading = document.createElement("h3");
+        heading.textContent = title;
+
+        const description = document.createElement("p");
+        description.textContent = "Open the interactive Learning Lab.";
+
+        const link = document.createElement("a");
+        link.className = "button";
+        link.href = "./" + encodeURIComponent(file.name);
+        link.textContent = "Open Learning Lab →";
+
+        card.append(heading, description, link);
+        grid.appendChild(card);
+      });
+    }
+
+    async function loadGuides() {
+      try {
+        const response = await fetch(
+          `https://api.github.com/repos/${owner}/${repo}/contents`
+        );
+
+        if (!response.ok) throw new Error("Could not load repository files.");
+
+        const files = await response.json();
+
+        guides = files
+          .filter(file =>
+            file.type === "file" &&
+            /\.html$/i.test(file.name) &&
+            file.name.toLowerCase() !== "index.html"
+          )
+          .sort((a, b) => prettify(a.name).localeCompare(prettify(b.name)));
+
+        render(guides);
+      } catch (error) {
+        grid.innerHTML =
+          '<div class="status">Could not load the guide list right now. Refresh the page in a moment.</div>';
+        count.textContent = "Unable to load";
+      }
+    }
+
+    search.addEventListener("input", () => {
+      const term = search.value.trim().toLowerCase();
+      const filtered = guides.filter(file =>
+        prettify(file.name).toLowerCase().includes(term)
+      );
+      render(filtered);
+    });
+
+    loadGuides();
+  </script>
 </body>
 </html>

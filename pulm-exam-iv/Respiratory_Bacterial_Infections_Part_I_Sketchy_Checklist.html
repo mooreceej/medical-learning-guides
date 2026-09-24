@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Respiratory Bacterial Infections Part I — Sketchy Checklist</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:#f7f8fb;color:#18212f;margin:0}
+.wrap{max-width:900px;margin:auto;padding:24px 16px 60px}
+.card{background:white;border:1px solid #dde3ee;border-radius:18px;padding:20px;margin-bottom:14px;box-shadow:0 8px 24px rgba(30,50,80,.06)}
+h1{margin:0 0 8px;font-size:clamp(1.5rem,3vw,2rem)}
+p{color:#667085}
+.progress{height:10px;background:#e8edf5;border-radius:999px;overflow:hidden;margin:14px 0 8px}
+.bar{height:100%;width:0;background:#3f6bd8}
+.count{font-weight:700;color:#3f6bd8}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+button{border:1px solid #d7deea;background:white;border-radius:9px;padding:8px 11px;font-weight:700;cursor:pointer}
+.list{display:grid;gap:10px}
+.item{background:white;border:1px solid #dde3ee;border-radius:14px;padding:14px;display:flex;justify-content:space-between;gap:14px;align-items:center}
+.item.done{background:#eef9f1}
+label{display:flex;gap:10px;align-items:flex-start;flex:1;cursor:pointer}
+input{width:20px;height:20px;margin-top:2px}
+.text{display:block}
+.name{display:block;font-weight:800}
+.note{display:block;color:#667085;font-size:.92rem;margin-top:3px}
+a{text-decoration:none;background:#eef3ff;color:#315fc7;font-weight:800;padding:9px 11px;border-radius:10px;white-space:nowrap}
+.course{background:#fffaf0;border:1px solid #f0dda6;border-radius:14px;padding:15px;margin-top:16px}
+@media(max-width:650px){.item{flex-direction:column;align-items:stretch}a{text-align:center}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>🦠 Respiratory Bacterial Infections Part I</h1>
+    <p>Sketchy Micro checklist — all lecture-relevant videos. Your progress saves automatically in this browser.</p>
+    <div class="progress"><div class="bar" id="bar"></div></div>
+    <div class="count" id="count">0 / 12 complete</div>
+    <div class="actions"><button id="all">Check all</button><button id="reset">Reset</button></div>
+  </div>
+  <div class="list">
+    <div class="item"><label><input type="checkbox" id="check-1"><span class="text"><span class="name">Staphylococcus aureus</span><span class="note">Clusters; catalase+; coagulase+; β-hemolysis; Protein A</span></span></label><a href="https://www.sketchy.com/medical-lessons/staphylococcus-aureus" target="_blank" rel="noopener">Open Sketchy ↗</a></div>
+    <div class="item"><label><input type="checkbox" id="check-2"><span class="text"><span class="name">Streptococcus pneumoniae &amp; Viridans</span><span class="note">Focus on S. pneumoniae: lancet diplococci; α-hemolysis; optochin sensitive; bile soluble</span></span></label><a href="https://www.sketchy.com/medical-lessons/streptococcus-pneumoniae-viridans" target="_blank" rel="noopener">Open Sketchy ↗</a></div>
+    <div class="item"><label><input type="checkbox" id="check-3"><span class="text"><span class="name">Streptococcus pyogenes (Group A Strep)</span><span class="note">β-hemolysis; M protein; pyrogenic exotoxins; streptolysin O</span></span></label><a href="https://www.sketchy.com/medical-lessons/streptococcus-pyogenes-group-a-strep" target="_blank" rel="noopener">Open Sketchy ↗</a></div>
+    <div class="item"><label><input type="checkbox" id="check-4"><span class="text"><span class="name">Corynebacterium diphtheriae</span><span class="note">Club-shaped G+ rod; diphtheria toxin → EF-2 inhibition; pseudomembrane</span></span></label><a href="https://www.sketchy.com/medical-lessons/corynebacterium-diphtheriae" target="_blank" rel="noopener">Open Sketchy ↗</a></div>
+    <div class="item"><label><input type="checkbox" id="check-5"><span class="text"><span class="name">Haemophilus influenzae</span><span class="note">G− coccobacillus; chocolate agar; factors V/X; Hib capsule</span></span></label><a href="https://www.sketchy.com/medical-lessons/haemophilus-influenzae" target="_blank" rel="noopener">Open Sketchy ↗</a></div>
+    <div class="item"><label><input type="checkbox" id="check-6"><span class="text"><span class="name">Moraxella catarrhalis</span><span class="note">G− diplococcus/coccobacillus; oxidase+; catalase+; β-lactamase</span></span></label><a href="https://www.sketchy.com/medical-lessons/moraxella-catarrhalis" target="_blank" rel="noopener">Open Sketchy ↗</a></div>
+    <div class="item"><label><input type="checkbox" id="check-7"><span class="text"><span class="name">Bordetella pertussis</span><span class="note">Pertussis toxin; adenylate cyclase toxin; tracheal cytotoxin; 3 stages</span></span></label><a href="https://www.sketchy.com/medical-lessons/bordetella-pertussis" target="_blank" rel="noopener">Open Sketchy ↗</a></div>
+    <div class="item"><label><input type="checkbox" id="check-8"><span class="text"><span class="name">Klebsiella pneumoniae, Enterobacter spp., Serratia marcescens</span><span class="note">Focus on Klebsiella: capsule; urease+; aspiration / healthcare association</span></span></label><a href="https://www.sketchy.com/medical-lessons/klebsiella-pneumoniae-enterobacter-spp-serratia-marcescens" target="_blank" rel="noopener">Open Sketchy ↗</a></div>
+    <div class="item"><label><input type="checkbox" id="check-9"><span class="text"><span class="name">Legionella pneumophila</span><span class="note">Water exposure; silver stain; BCYE + cysteine/iron; facultative intracellular</span></span></label><a href="https://www.sketchy.com/medical-lessons/legionella-pneumophila" target="_blank" rel="noopener">Open Sketchy ↗</a></div>
+    <div class="item"><label><input type="checkbox" id="check-10"><span class="text"><span class="name">Pseudomonas aeruginosa</span><span class="note">Oxidase+; non-lactose fermenter; blue-green pigment; fruity odor; Toxin A</span></span></label><a href="https://www.sketchy.com/medical-lessons/pseudomonas-aeruginosa" target="_blank" rel="noopener">Open Sketchy ↗</a></div>
+    <div class="item"><label><input type="checkbox" id="check-11"><span class="text"><span class="name">Mycoplasma pneumoniae</span><span class="note">No cell wall; Eaton agar; P1 attachment; walking pneumonia</span></span></label><a href="https://www.sketchy.com/medical-lessons/mycoplasma-pneumoniae" target="_blank" rel="noopener">Open Sketchy ↗</a></div>
+    <div class="item"><label><input type="checkbox" id="check-12"><span class="text"><span class="name">Chlamydia trachomatis, Chlamydophila pneumoniae &amp; Chlamydophila psittaci</span><span class="note">Focus on C. pneumoniae + C. psittaci; elementary vs reticulate bodies</span></span></label><a href="https://www.sketchy.com/medical-lessons/chlamydia-trachomatis-chlamydophila-pneumoniae-chlamydophila-psittaci" target="_blank" rel="noopener">Open Sketchy ↗</a></div>
+  </div>
+  <div class="course"><b>📌 Course-only add-on: Fusobacterium necrophorum / Lemierre syndrome</b><br>No verified standalone Sketchy Micro lesson was found. Review from the lecture/Learning Lab: <b>pharyngitis → internal jugular septic thrombophlebitis → septic emboli</b>.</div>
+</div>
+<script>
+const KEY='cj_resp_bact_part1_sketchy_v1';
+const boxes=[...document.querySelectorAll('input[type=checkbox]')];
+function update(){const saved=JSON.parse(localStorage.getItem(KEY)||'{}');let done=0;boxes.forEach(b=>{if(saved[b.id])b.checked=true;b.closest('.item').classList.toggle('done',b.checked);if(b.checked)done++;});document.getElementById('count').textContent=`${done} / 12 complete`;document.getElementById('bar').style.width=`${100*done/12}%`;}
+function save(){let obj={};boxes.forEach(b=>obj[b.id]=b.checked);localStorage.setItem(KEY,JSON.stringify(obj));boxes.forEach(b=>b.closest('.item').classList.toggle('done',b.checked));let done=boxes.filter(b=>b.checked).length;document.getElementById('count').textContent=`${done} / 12 complete`;document.getElementById('bar').style.width=`${100*done/12}%`;}
+boxes.forEach(b=>b.addEventListener('change',save));
+document.getElementById('all').onclick=()=>{boxes.forEach(b=>b.checked=true);save();};
+document.getElementById('reset').onclick=()=>{boxes.forEach(b=>b.checked=false);save();};
+update();
+</script>
+</body>
+</html>

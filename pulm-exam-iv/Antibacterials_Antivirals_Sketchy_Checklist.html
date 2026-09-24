@@ -26,6 +26,10 @@
   .done{text-decoration:line-through;color:#7a8492}
   button{border:1px solid var(--line);background:#fff;padding:8px 12px;border-radius:10px;cursor:pointer}
   .footer{margin-top:18px;font-size:.85rem;color:var(--muted)}
+  .links{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-left:auto}
+  .sketchy-link{display:inline-block;text-decoration:none;font-size:.82rem;font-weight:800;color:var(--blue);background:#eef3ff;border:1px solid #cbd8f2;padding:6px 9px;border-radius:9px;white-space:nowrap}
+  .sketchy-link:hover{background:#e4edff}
+  @media(max-width:700px){.item{flex-wrap:wrap}.links{width:100%;margin-left:32px}}
 </style>
 </head>
 <body>
@@ -41,26 +45,26 @@
   <div class="card">
     <h2 style="margin-top:0">Watch / Review</h2>
 
-    <div class="item"><input id="i1" type="checkbox"><label for="i1"><b>Penicillins</b><span class="tag high">Priority</span><div class="note">Natural penicillins + anti-staphylococcal penicillins</div></label></div>
-    <div class="item"><input id="i2" type="checkbox"><label for="i2"><b>Aminopenicillins + β-lactamase inhibitors</b><span class="tag high">Priority</span><div class="note">Amoxicillin-clavulanate, ampicillin-sulbactam</div></label></div>
-    <div class="item"><input id="i3" type="checkbox"><label for="i3"><b>Antipseudomonal penicillins</b><span class="tag high">Priority</span><div class="note">Piperacillin-tazobactam</div></label></div>
-    <div class="item"><input id="i4" type="checkbox"><label for="i4"><b>Cephalosporins</b><span class="tag high">Priority</span><div class="note">Especially cefazolin/cephalexin, ceftriaxone, cefepime</div></label></div>
-    <div class="item"><input id="i5" type="checkbox"><label for="i5"><b>Carbapenems + monobactam</b><span class="tag high">Priority</span><div class="note">Ertapenem vs meropenem; aztreonam</div></label></div>
-    <div class="item"><input id="i6" type="checkbox"><label for="i6"><b>Vancomycin / glycopeptides</b><span class="tag high">Priority</span></label></div>
-    <div class="item"><input id="i7" type="checkbox"><label for="i7"><b>Daptomycin</b><span class="tag high">Priority</span><div class="note">Remember: inactivated by pulmonary surfactant → not for pneumonia</div></label></div>
+    <div class="item"><input id="i1" type="checkbox"><label for="i1"><b>Penicillins</b><span class="tag high">Priority</span><div class="note">Natural penicillins + anti-staphylococcal penicillins</div></label><span class="links"><a class="sketchy-link" href="https://www.sketchy.com/medical-lessons/penicillin" target="_blank" rel="noopener">Penicillin ↗</a><a class="sketchy-link" href="https://www.sketchy.com/medical-lessons/nafcillin-oxacillin-methicillin-dicloxacillin" target="_blank" rel="noopener">Anti-staph penicillins ↗</a></span></div>
+    <div class="item"><input id="i2" type="checkbox"><label for="i2"><b>Aminopenicillins + β-lactamase inhibitors</b><span class="tag high">Priority</span><div class="note">Amoxicillin-clavulanate, ampicillin-sulbactam</div></label><span class="links"><a class="sketchy-link" href="https://www.sketchy.com/medical-lessons/ampicillin-amoxicillin-piperacillin-ticarcillin" target="_blank" rel="noopener">Open Sketchy ↗</a></span></div>
+    <div class="item"><input id="i3" type="checkbox"><label for="i3"><b>Antipseudomonal penicillins</b><span class="tag high">Priority</span><div class="note">Piperacillin-tazobactam</div></label><span class="links"><a class="sketchy-link" href="https://www.sketchy.com/medical-lessons/ampicillin-amoxicillin-piperacillin-ticarcillin" target="_blank" rel="noopener">Open Sketchy ↗</a></span></div>
+    <div class="item"><input id="i4" type="checkbox"><label for="i4"><b>Cephalosporins</b><span class="tag high">Priority</span><div class="note">Especially cefazolin/cephalexin, ceftriaxone, cefepime</div></label><span class="links"><a class="sketchy-link" href="https://www.sketchy.com/medical-lessons/cephalosporins" target="_blank" rel="noopener">Open Sketchy ↗</a></span></div>
+    <div class="item"><input id="i5" type="checkbox"><label for="i5"><b>Carbapenems + monobactam</b><span class="tag high">Priority</span><div class="note">Ertapenem vs meropenem; aztreonam</div></label><span class="links"><a class="sketchy-link" href="https://www.sketchy.com/medical-lessons/monobactams-carbapenems" target="_blank" rel="noopener">Open Sketchy ↗</a></span></div>
+    <div class="item"><input id="i6" type="checkbox"><label for="i6"><b>Vancomycin / glycopeptides</b><span class="tag high">Priority</span></label><span class="links"><a class="sketchy-link" href="https://www.sketchy.com/medical-lessons/vancomycin" target="_blank" rel="noopener">Open Sketchy ↗</a></span></div>
+    <div class="item"><input id="i7" type="checkbox"><label for="i7"><b>Daptomycin</b><span class="tag high">Priority</span><div class="note">Remember: inactivated by pulmonary surfactant → not for pneumonia</div></label><span class="links"><a class="sketchy-link" href="https://www.sketchy.com/medical-lessons/daptomycin" target="_blank" rel="noopener">Open Sketchy ↗</a></span></div>
     <div class="item"><input id="i8" type="checkbox"><label for="i8"><b>Polymyxins / colistin</b></label></div>
-    <div class="item"><input id="i9" type="checkbox"><label for="i9"><b>Macrolides</b><span class="tag high">Priority</span><div class="note">Especially azithromycin</div></label></div>
-    <div class="item"><input id="i10" type="checkbox"><label for="i10"><b>Tetracyclines</b><span class="tag high">Priority</span><div class="note">Especially doxycycline</div></label></div>
-    <div class="item"><input id="i11" type="checkbox"><label for="i11"><b>Clindamycin</b><span class="tag high">Priority</span></label></div>
-    <div class="item"><input id="i12" type="checkbox"><label for="i12"><b>Linezolid</b><span class="tag high">Priority</span></label></div>
-    <div class="item"><input id="i13" type="checkbox"><label for="i13"><b>Aminoglycosides</b><span class="tag high">Priority</span><div class="note">Gentamicin, tobramycin, amikacin</div></label></div>
-    <div class="item"><input id="i14" type="checkbox"><label for="i14"><b>Metronidazole</b><span class="tag high">Priority</span></label></div>
-    <div class="item"><input id="i15" type="checkbox"><label for="i15"><b>TMP-SMX / sulfonamides</b><span class="tag high">Priority</span></label></div>
+    <div class="item"><input id="i9" type="checkbox"><label for="i9"><b>Macrolides</b><span class="tag high">Priority</span><div class="note">Especially azithromycin</div></label><span class="links"><a class="sketchy-link" href="https://www.sketchy.com/medical-lessons/macrolides" target="_blank" rel="noopener">Open Sketchy ↗</a></span></div>
+    <div class="item"><input id="i10" type="checkbox"><label for="i10"><b>Tetracyclines</b><span class="tag high">Priority</span><div class="note">Especially doxycycline</div></label><span class="links"><a class="sketchy-link" href="https://www.sketchy.com/medical-lessons/tetracyclines" target="_blank" rel="noopener">Open Sketchy ↗</a></span></div>
+    <div class="item"><input id="i11" type="checkbox"><label for="i11"><b>Clindamycin</b><span class="tag high">Priority</span></label><span class="links"><a class="sketchy-link" href="https://www.sketchy.com/medical-lessons/clindamycin" target="_blank" rel="noopener">Open Sketchy ↗</a></span></div>
+    <div class="item"><input id="i12" type="checkbox"><label for="i12"><b>Linezolid</b><span class="tag high">Priority</span></label><span class="links"><a class="sketchy-link" href="https://www.sketchy.com/medical-lessons/linezolid" target="_blank" rel="noopener">Open Sketchy ↗</a></span></div>
+    <div class="item"><input id="i13" type="checkbox"><label for="i13"><b>Aminoglycosides</b><span class="tag high">Priority</span><div class="note">Gentamicin, tobramycin, amikacin</div></label><span class="links"><a class="sketchy-link" href="https://www.sketchy.com/medical-lessons/aminoglycosides" target="_blank" rel="noopener">Open Sketchy ↗</a></span></div>
+    <div class="item"><input id="i14" type="checkbox"><label for="i14"><b>Metronidazole</b><span class="tag high">Priority</span></label><span class="links"><a class="sketchy-link" href="https://www.sketchy.com/medical-lessons/metronidazole" target="_blank" rel="noopener">Open Sketchy ↗</a></span></div>
+    <div class="item"><input id="i15" type="checkbox"><label for="i15"><b>TMP-SMX / sulfonamides</b><span class="tag high">Priority</span></label><span class="links"><a class="sketchy-link" href="https://www.sketchy.com/medical-lessons/trimethoprim-sulfamethoxazole" target="_blank" rel="noopener">Open Sketchy ↗</a></span></div>
     <div class="item"><input id="i16" type="checkbox"><label for="i16"><b>Nitrofurantoin</b><span class="tag high">Priority</span></label></div>
     <div class="item"><input id="i17" type="checkbox"><label for="i17"><b>Fosfomycin</b><div class="note">If your Sketchy version has a dedicated segment; otherwise lecture notes are enough</div></label></div>
-    <div class="item"><input id="i18" type="checkbox"><label for="i18"><b>Fluoroquinolones</b><span class="tag later">Later</span><div class="note">Ciprofloxacin, levofloxacin, moxifloxacin — formally covered later by Dr. Ludvigsen</div></label></div>
-    <div class="item"><input id="i19" type="checkbox"><label for="i19"><b>Influenza antivirals</b><span class="tag high">Priority</span><div class="note">Oseltamivir, zanamivir, peramivir + baloxavir</div></label></div>
-    <div class="item"><input id="i20" type="checkbox"><label for="i20"><b>Ribavirin / RSV treatment</b></label></div>
+    <div class="item"><input id="i18" type="checkbox"><label for="i18"><b>Fluoroquinolones</b><span class="tag later">Later</span><div class="note">Ciprofloxacin, levofloxacin, moxifloxacin — formally covered later by Dr. Ludvigsen</div></label><span class="links"><a class="sketchy-link" href="https://www.sketchy.com/medical-lessons/fluoroquinolones" target="_blank" rel="noopener">Open Sketchy ↗</a></span></div>
+    <div class="item"><input id="i19" type="checkbox"><label for="i19"><b>Influenza antivirals</b><span class="tag high">Priority</span><div class="note">Oseltamivir, zanamivir, peramivir + baloxavir</div></label><span class="links"><a class="sketchy-link" href="https://www.sketchy.com/medical-lessons/influenzavirus-orthomyxoviridae" target="_blank" rel="noopener">Influenza lesson ↗</a></span></div>
+    <div class="item"><input id="i20" type="checkbox"><label for="i20"><b>Ribavirin / RSV treatment</b></label><span class="links"><a class="sketchy-link" href="https://www.sketchy.com/medical-lessons/respiratory-syncytial-virus-and-human-metapneumovirus-pnuemoviridae" target="_blank" rel="noopener">RSV lesson ↗</a></span></div>
     <div class="item"><input id="i21" type="checkbox"><label for="i21"><b>COVID + RSV prevention review</b><span class="tag later">Lecture-heavy</span><div class="note">Remdesivir, Paxlovid, dexamethasone, baricitinib/tocilizumab, nirsevimab — use lecture/Learning Lab if Sketchy coverage is limited</div></label></div>
   </div>
 
@@ -70,7 +74,7 @@
     <button id="reset">Reset checklist</button>
   </div>
 
-  <div class="footer">Progress is saved locally in this browser/device.</div>
+  <div class="footer">Progress is saved locally in this browser/device. “Open Sketchy” buttons use verified Sketchy lesson pages. A few newer/niche drugs do not currently have a dedicated public Sketchy lesson page, so those remain lecture/Learning-Lab items.</div>
 </div>
 <script>
 const boxes=[...document.querySelectorAll('input[type=checkbox]')];

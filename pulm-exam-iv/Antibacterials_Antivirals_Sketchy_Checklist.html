@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sketchy Checklist — Antibacterials & Respiratory Antivirals</title>
+<style>
+  :root{--bg:#f7f8fb;--card:#fff;--ink:#172033;--muted:#667085;--line:#dfe4ec;--blue:#24458f;--green:#15803d;--amber:#a16207;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45}
+  .wrap{max-width:900px;margin:auto;padding:28px 18px 60px}
+  .hero{background:linear-gradient(135deg,#edf3ff,#f7f3ff);border:1px solid var(--line);border-radius:18px;padding:24px}
+  h1{margin:0 0 6px;font-size:clamp(1.8rem,4vw,2.7rem);color:var(--blue)}
+  h2{margin:28px 0 12px}
+  .muted{color:var(--muted)}
+  .progress{height:14px;background:#e6e9ef;border-radius:999px;overflow:hidden;margin:16px 0 6px}
+  .bar{height:100%;width:0;background:var(--green);transition:width .2s ease}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-top:16px}
+  .item{display:flex;gap:12px;align-items:flex-start;padding:12px 2px;border-bottom:1px solid #eef1f5}
+  .item:last-child{border-bottom:0}
+  input[type=checkbox]{width:20px;height:20px;margin-top:2px;accent-color:var(--green)}
+  label{cursor:pointer;flex:1}
+  .tag{display:inline-block;font-size:.75rem;font-weight:800;padding:2px 7px;border-radius:999px;margin-left:6px;vertical-align:1px}
+  .high{background:#e8f5ec;color:#166534}.later{background:#fff4d6;color:#854d0e}
+  .note{font-size:.9rem;color:var(--muted);margin-top:3px}
+  .done{text-decoration:line-through;color:#7a8492}
+  button{border:1px solid var(--line);background:#fff;padding:8px 12px;border-radius:10px;cursor:pointer}
+  .footer{margin-top:18px;font-size:.85rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="muted">Pulm Exam IV • Resource Checklist</div>
+    <h1>Sketchy Checklist</h1>
+    <b>Antibacterials & Respiratory Antivirals</b>
+    <div class="progress"><div class="bar" id="bar"></div></div>
+    <div id="count" class="muted">0 of 21 completed</div>
+  </div>
+
+  <div class="card">
+    <h2 style="margin-top:0">Watch / Review</h2>
+
+    <div class="item"><input id="i1" type="checkbox"><label for="i1"><b>Penicillins</b><span class="tag high">Priority</span><div class="note">Natural penicillins + anti-staphylococcal penicillins</div></label></div>
+    <div class="item"><input id="i2" type="checkbox"><label for="i2"><b>Aminopenicillins + β-lactamase inhibitors</b><span class="tag high">Priority</span><div class="note">Amoxicillin-clavulanate, ampicillin-sulbactam</div></label></div>
+    <div class="item"><input id="i3" type="checkbox"><label for="i3"><b>Antipseudomonal penicillins</b><span class="tag high">Priority</span><div class="note">Piperacillin-tazobactam</div></label></div>
+    <div class="item"><input id="i4" type="checkbox"><label for="i4"><b>Cephalosporins</b><span class="tag high">Priority</span><div class="note">Especially cefazolin/cephalexin, ceftriaxone, cefepime</div></label></div>
+    <div class="item"><input id="i5" type="checkbox"><label for="i5"><b>Carbapenems + monobactam</b><span class="tag high">Priority</span><div class="note">Ertapenem vs meropenem; aztreonam</div></label></div>
+    <div class="item"><input id="i6" type="checkbox"><label for="i6"><b>Vancomycin / glycopeptides</b><span class="tag high">Priority</span></label></div>
+    <div class="item"><input id="i7" type="checkbox"><label for="i7"><b>Daptomycin</b><span class="tag high">Priority</span><div class="note">Remember: inactivated by pulmonary surfactant → not for pneumonia</div></label></div>
+    <div class="item"><input id="i8" type="checkbox"><label for="i8"><b>Polymyxins / colistin</b></label></div>
+    <div class="item"><input id="i9" type="checkbox"><label for="i9"><b>Macrolides</b><span class="tag high">Priority</span><div class="note">Especially azithromycin</div></label></div>
+    <div class="item"><input id="i10" type="checkbox"><label for="i10"><b>Tetracyclines</b><span class="tag high">Priority</span><div class="note">Especially doxycycline</div></label></div>
+    <div class="item"><input id="i11" type="checkbox"><label for="i11"><b>Clindamycin</b><span class="tag high">Priority</span></label></div>
+    <div class="item"><input id="i12" type="checkbox"><label for="i12"><b>Linezolid</b><span class="tag high">Priority</span></label></div>
+    <div class="item"><input id="i13" type="checkbox"><label for="i13"><b>Aminoglycosides</b><span class="tag high">Priority</span><div class="note">Gentamicin, tobramycin, amikacin</div></label></div>
+    <div class="item"><input id="i14" type="checkbox"><label for="i14"><b>Metronidazole</b><span class="tag high">Priority</span></label></div>
+    <div class="item"><input id="i15" type="checkbox"><label for="i15"><b>TMP-SMX / sulfonamides</b><span class="tag high">Priority</span></label></div>
+    <div class="item"><input id="i16" type="checkbox"><label for="i16"><b>Nitrofurantoin</b><span class="tag high">Priority</span></label></div>
+    <div class="item"><input id="i17" type="checkbox"><label for="i17"><b>Fosfomycin</b><div class="note">If your Sketchy version has a dedicated segment; otherwise lecture notes are enough</div></label></div>
+    <div class="item"><input id="i18" type="checkbox"><label for="i18"><b>Fluoroquinolones</b><span class="tag later">Later</span><div class="note">Ciprofloxacin, levofloxacin, moxifloxacin — formally covered later by Dr. Ludvigsen</div></label></div>
+    <div class="item"><input id="i19" type="checkbox"><label for="i19"><b>Influenza antivirals</b><span class="tag high">Priority</span><div class="note">Oseltamivir, zanamivir, peramivir + baloxavir</div></label></div>
+    <div class="item"><input id="i20" type="checkbox"><label for="i20"><b>Ribavirin / RSV treatment</b></label></div>
+    <div class="item"><input id="i21" type="checkbox"><label for="i21"><b>COVID + RSV prevention review</b><span class="tag later">Lecture-heavy</span><div class="note">Remdesivir, Paxlovid, dexamethasone, baricitinib/tocilizumab, nirsevimab — use lecture/Learning Lab if Sketchy coverage is limited</div></label></div>
+  </div>
+
+  <div class="card">
+    <h2 style="margin-top:0">Fastest high-priority order</h2>
+    <p>Penicillins → cephalosporins → carbapenems → vancomycin → daptomycin → macrolides → doxycycline → clindamycin → linezolid → aminoglycosides → metronidazole → TMP-SMX → nitrofurantoin → influenza antivirals.</p>
+    <button id="reset">Reset checklist</button>
+  </div>
+
+  <div class="footer">Progress is saved locally in this browser/device.</div>
+</div>
+<script>
+const boxes=[...document.querySelectorAll('input[type=checkbox]')];
+const key='antibacterials-antivirals-sketchy-checklist-v1';
+function load(){
+  const saved=JSON.parse(localStorage.getItem(key)||'{}');
+  boxes.forEach(b=>b.checked=!!saved[b.id]);
+  paint();
+}
+function paint(){
+  const saved={};
+  boxes.forEach(b=>{
+    saved[b.id]=b.checked;
+    const lab=document.querySelector('label[for="'+b.id+'"]');
+    if(lab) lab.classList.toggle('done',b.checked);
+  });
+  localStorage.setItem(key,JSON.stringify(saved));
+  const n=boxes.filter(b=>b.checked).length;
+  document.getElementById('count').textContent=n+' of '+boxes.length+' completed';
+  document.getElementById('bar').style.width=(n/boxes.length*100)+'%';
+}
+boxes.forEach(b=>b.addEventListener('change',paint));
+document.getElementById('reset').addEventListener('click',()=>{
+  if(confirm('Reset all checklist items?')){boxes.forEach(b=>b.checked=false);paint();}
+});
+load();
+</script>
+</body>
+</html>

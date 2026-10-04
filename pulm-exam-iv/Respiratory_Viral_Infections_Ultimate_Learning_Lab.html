@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Viral Infections of the Respiratory Tract — Ultimate Learning Lab</title>
+<title>Viral Infections of the Respiratory Tract — Learning Lab REBUILT</title>
 <style>
 :root{
   --bg:#f7f7f3; --paper:#fffefa; --ink:#1f2933; --muted:#667085; --line:#d9ddd8;
@@ -74,6 +74,38 @@ th{background:#f1f5f2}
   #start,#mechanisms,#virus-guide,#compare,#recognition,#figures,#practice,#sources{display:none!important}
   #exam{display:block!important} table{font-size:9pt} h2{font-size:18pt} h3{font-size:13pt}
 }
+
+/* Rebuilt practice engine: deliberately simple and file:// safe */
+.rebuilt-practice-toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 8px}
+.rebuilt-status{font-weight:800;color:var(--accent);margin:4px 0 14px}
+.rebuilt-qcard{display:none;border:1px solid var(--line);border-radius:16px;padding:22px;background:#fff}
+.rebuilt-qcard.active{display:block}
+.rebuilt-qmeta{color:var(--muted);font-size:.9rem;margin-bottom:14px}
+.rebuilt-stem{font-size:1.22rem;line-height:1.45;margin:0 0 16px}
+.rebuilt-options{display:grid;gap:10px}
+.rebuilt-option{display:flex;gap:11px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#fff;cursor:pointer;transition:.12s ease}
+.rebuilt-option:hover{background:#f7fbfa;border-color:#a9c8c2}
+.rebuilt-option input{margin-top:4px;flex:0 0 auto}
+.rebuilt-option:has(input:checked){outline:3px solid #b8d7f1;background:#f3f8fc}
+.option-letter{font-weight:900;min-width:1.25rem}
+.rebuilt-option.correct-answer{background:#eaf7ed;border-color:#8fc59a;outline:3px solid #b9dfc1}
+.rebuilt-option.selected-wrong{background:#fff0ee;border-color:#de9d97;outline:3px solid #efc0bc}
+.rebuilt-option.selected-correct{background:#eaf7ed;border-color:#8fc59a;outline:3px solid #b9dfc1}
+.rebuilt-option.locked{cursor:default}
+.rebuilt-answer-controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:16px}
+.confidence-label{display:flex;gap:8px;align-items:center}
+.rebuilt-feedback{margin-top:18px;border-top:2px solid var(--line);padding-top:18px}
+.rebuilt-feedback[hidden]{display:none!important}
+.rebuilt-verdict{font-size:1.08rem;font-weight:900;padding:12px 14px;border-radius:12px;margin-bottom:10px}
+.rebuilt-verdict.is-correct{background:#e8f5ea;border:1px solid #b7dabf}
+.rebuilt-verdict.is-wrong{background:#fdeaea;border:1px solid #efb8b5}
+.rebuilt-correct-answer{font-size:1.02rem;margin:10px 0}
+.rebuilt-next-inline{margin-top:14px}
+@media(max-width:680px){
+  .rebuilt-qcard{padding:16px}
+  .rebuilt-stem{font-size:1.08rem}
+}
+
 </style>
 </head>
 <body>
@@ -177,19 +209,1177 @@ th{background:#f1f5f2}
   <div id="figure-list"></div>
 </section>
 
+
 <section id="practice">
   <h2>7. Practice</h2>
-  <div class="callout"><strong>Blind retrieval:</strong> source and explanation stay hidden until you submit each question. The first six items are the professor’s practice questions; they are not labeled during active answering.</div>
-  <div class="controls">
-    <button class="btn" id="prev-q">Previous</button>
-    <button class="btn" id="next-q">Next</button>
-    <button class="btn" id="random-q">Random</button>
-    <button class="btn" id="missed-q">Review missed / uncertain</button>
-    <button class="btn" id="reset-q">Reset progress</button>
+  <div class="callout">
+    <strong>Rebuilt practice engine:</strong> answer → submit → the correct answer and full rationale appear
+    <strong>immediately underneath the question</strong>. This version does not use browser storage or rerender the
+    question after you submit, so it works reliably when opened as a downloaded HTML file.
   </div>
-  <div class="meta" id="q-progress"></div>
-  <div class="card" id="question-card"></div>
+
+  <div class="rebuilt-practice-toolbar">
+    <button type="button" class="btn" id="rebuilt-prev">Previous</button>
+    <button type="button" class="btn" id="rebuilt-next">Next</button>
+    <button type="button" class="btn" id="rebuilt-random">Random</button>
+    <button type="button" class="btn" id="rebuilt-review">Review missed / uncertain</button>
+    <button type="button" class="btn" id="rebuilt-reset">Reset progress</button>
+  </div>
+  <div class="rebuilt-status" id="rebuilt-status">0 answered · 0 correct</div>
+
+  <div id="rebuilt-question-stack">
+    
+      <article class="rebuilt-qcard active" data-q="0" data-correct="4" data-answered="0">
+        <div class="rebuilt-qmeta">Question 1 of 22</div>
+        <h3 class="rebuilt-stem">A 29-year-old man has extreme fatigue, sore throat, headaches/body aches, cervical lymphadenopathy, and hepatosplenomegaly. Which genome is characteristic of the most likely infectious agent?</h3>
+        <div class="rebuilt-options">
+          <label class="rebuilt-option" data-option="0">
+                <input type="radio" name="rebuilt-q-0" value="0">
+                <span class="option-letter">A</span>
+                <span class="option-text">Positive-sense single-stranded RNA</span>
+            </label><label class="rebuilt-option" data-option="1">
+                <input type="radio" name="rebuilt-q-0" value="1">
+                <span class="option-letter">B</span>
+                <span class="option-text">Negative-sense single-stranded RNA</span>
+            </label><label class="rebuilt-option" data-option="2">
+                <input type="radio" name="rebuilt-q-0" value="2">
+                <span class="option-letter">C</span>
+                <span class="option-text">Double-stranded RNA</span>
+            </label><label class="rebuilt-option" data-option="3">
+                <input type="radio" name="rebuilt-q-0" value="3">
+                <span class="option-letter">D</span>
+                <span class="option-text">Single-stranded DNA</span>
+            </label><label class="rebuilt-option" data-option="4">
+                <input type="radio" name="rebuilt-q-0" value="4">
+                <span class="option-letter">E</span>
+                <span class="option-text">Double-stranded DNA</span>
+            </label>
+        </div>
+        <div class="rebuilt-answer-controls">
+          <label class="confidence-label">Confidence:
+            <select class="rebuilt-confidence">
+              <option value="">—</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </label>
+          <button type="button" class="btn primary rebuilt-submit" disabled>Submit answer</button>
+        </div>
+
+        <div class="rebuilt-feedback" hidden aria-live="polite">
+          <div class="rebuilt-verdict"></div>
+          <div class="rebuilt-correct-answer">
+            <strong>Correct answer:</strong> E. Double-stranded DNA
+          </div>
+          <p><strong>Why it fits:</strong> The presentation is infectious mononucleosis due to EBV. EBV is a herpesvirus with a <strong>double-stranded DNA</strong> genome.</p>
+          <details>
+            <summary><strong>Why the other options fail</strong></summary>
+            <ul><li>Rhinovirus/coronavirus are +ssRNA.</li><li>Influenza/RSV/parainfluenza/mumps/measles are −ssRNA.</li><li>No discussed major respiratory virus here is the classic dsRNA answer for this syndrome.</li><li>EBV is not ssDNA.</li></ul>
+          </details>
+          <div class="callout"><strong>Teaching takeaway:</strong> Mono pattern → EBV → enveloped dsDNA herpesvirus.</div>
+          <p class="meta"><strong>Source revealed after submission:</strong> Professor practice question 1; EBV slides 24–26.</p>
+          <button type="button" class="btn primary rebuilt-next-inline">Next question →</button>
+        </div>
+      </article>
+    
+      <article class="rebuilt-qcard" data-q="1" data-correct="4" data-answered="0">
+        <div class="rebuilt-qmeta">Question 2 of 22</div>
+        <h3 class="rebuilt-stem">A 22-year-old unvaccinated man has fever, painful testicles, and bilateral swelling above the jawline. Which etiologic agent best fits?</h3>
+        <div class="rebuilt-options">
+          <label class="rebuilt-option" data-option="0">
+                <input type="radio" name="rebuilt-q-1" value="0">
+                <span class="option-letter">A</span>
+                <span class="option-text">Coxsackievirus A</span>
+            </label><label class="rebuilt-option" data-option="1">
+                <input type="radio" name="rebuilt-q-1" value="1">
+                <span class="option-letter">B</span>
+                <span class="option-text">Epstein–Barr virus</span>
+            </label><label class="rebuilt-option" data-option="2">
+                <input type="radio" name="rebuilt-q-1" value="2">
+                <span class="option-letter">C</span>
+                <span class="option-text">Influenza virus</span>
+            </label><label class="rebuilt-option" data-option="3">
+                <input type="radio" name="rebuilt-q-1" value="3">
+                <span class="option-letter">D</span>
+                <span class="option-text">Parainfluenza virus</span>
+            </label><label class="rebuilt-option" data-option="4">
+                <input type="radio" name="rebuilt-q-1" value="4">
+                <span class="option-letter">E</span>
+                <span class="option-text">Paramyxovirus / mumps virus</span>
+            </label><label class="rebuilt-option" data-option="5">
+                <input type="radio" name="rebuilt-q-1" value="5">
+                <span class="option-letter">F</span>
+                <span class="option-text">Rhinovirus</span>
+            </label><label class="rebuilt-option" data-option="6">
+                <input type="radio" name="rebuilt-q-1" value="6">
+                <span class="option-letter">G</span>
+                <span class="option-text">RSV</span>
+            </label><label class="rebuilt-option" data-option="7">
+                <input type="radio" name="rebuilt-q-1" value="7">
+                <span class="option-letter">H</span>
+                <span class="option-text">SARS-CoV-2</span>
+            </label>
+        </div>
+        <div class="rebuilt-answer-controls">
+          <label class="confidence-label">Confidence:
+            <select class="rebuilt-confidence">
+              <option value="">—</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </label>
+          <button type="button" class="btn primary rebuilt-submit" disabled>Submit answer</button>
+        </div>
+
+        <div class="rebuilt-feedback" hidden aria-live="polite">
+          <div class="rebuilt-verdict"></div>
+          <div class="rebuilt-correct-answer">
+            <strong>Correct answer:</strong> E. Paramyxovirus / mumps virus
+          </div>
+          <p><strong>Why it fits:</strong> Parotitis plus orchitis is the classic mumps pattern. Mumps is a paramyxovirus/Paramyxoviridae virus in the lecture.</p>
+          <details>
+            <summary><strong>Why the other options fail</strong></summary>
+            <ul><li>Coxsackie A was linked to herpangina.</li><li>EBV produces mono.</li><li>Influenza can cause URI/LRI and rare parotitis, but this pairing is classic mumps.</li><li>Parainfluenza is linked to croup.</li><li>Rhinovirus causes the common cold.</li><li>RSV classically causes infant bronchiolitis.</li><li>SARS-CoV-2 does not fit the parotitis–orchitis pattern.</li></ul>
+          </details>
+          <div class="callout"><strong>Teaching takeaway:</strong> Parotitis + orchitis + absent MMR protection → mumps.</div>
+          <p class="meta"><strong>Source revealed after submission:</strong> Professor practice question 2; mumps slides 27–31.</p>
+          <button type="button" class="btn primary rebuilt-next-inline">Next question →</button>
+        </div>
+      </article>
+    
+      <article class="rebuilt-qcard" data-q="2" data-correct="3" data-answered="0">
+        <div class="rebuilt-qmeta">Question 3 of 22</div>
+        <h3 class="rebuilt-stem">A 3-year-old has rhinorrhea and then develops a seal-like cough. Which virus is most likely?</h3>
+        <div class="rebuilt-options">
+          <label class="rebuilt-option" data-option="0">
+                <input type="radio" name="rebuilt-q-2" value="0">
+                <span class="option-letter">A</span>
+                <span class="option-text">Coxsackievirus A</span>
+            </label><label class="rebuilt-option" data-option="1">
+                <input type="radio" name="rebuilt-q-2" value="1">
+                <span class="option-letter">B</span>
+                <span class="option-text">Epstein–Barr virus</span>
+            </label><label class="rebuilt-option" data-option="2">
+                <input type="radio" name="rebuilt-q-2" value="2">
+                <span class="option-letter">C</span>
+                <span class="option-text">Influenza virus</span>
+            </label><label class="rebuilt-option" data-option="3">
+                <input type="radio" name="rebuilt-q-2" value="3">
+                <span class="option-letter">D</span>
+                <span class="option-text">Parainfluenza virus</span>
+            </label><label class="rebuilt-option" data-option="4">
+                <input type="radio" name="rebuilt-q-2" value="4">
+                <span class="option-letter">E</span>
+                <span class="option-text">Mumps virus</span>
+            </label><label class="rebuilt-option" data-option="5">
+                <input type="radio" name="rebuilt-q-2" value="5">
+                <span class="option-letter">F</span>
+                <span class="option-text">Rhinovirus</span>
+            </label><label class="rebuilt-option" data-option="6">
+                <input type="radio" name="rebuilt-q-2" value="6">
+                <span class="option-letter">G</span>
+                <span class="option-text">RSV</span>
+            </label><label class="rebuilt-option" data-option="7">
+                <input type="radio" name="rebuilt-q-2" value="7">
+                <span class="option-letter">H</span>
+                <span class="option-text">SARS-CoV-2</span>
+            </label>
+        </div>
+        <div class="rebuilt-answer-controls">
+          <label class="confidence-label">Confidence:
+            <select class="rebuilt-confidence">
+              <option value="">—</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </label>
+          <button type="button" class="btn primary rebuilt-submit" disabled>Submit answer</button>
+        </div>
+
+        <div class="rebuilt-feedback" hidden aria-live="polite">
+          <div class="rebuilt-verdict"></div>
+          <div class="rebuilt-correct-answer">
+            <strong>Correct answer:</strong> D. Parainfluenza virus
+          </div>
+          <p><strong>Why it fits:</strong> A barky/seal-like cough in a young child is classic croup, which this lecture associates strongly with <strong>parainfluenza</strong>.</p>
+          <details>
+            <summary><strong>Why the other options fail</strong></summary>
+            <ul><li>Coxsackie A is associated with herpangina.</li><li>EBV causes mono.</li><li>Influenza can cause lower-respiratory illness but is not the classic croup virus.</li><li>Mumps causes parotitis/systemic disease.</li><li>Rhinovirus is the classic cold virus.</li><li>RSV is the classic infant bronchiolitis virus.</li><li>SARS-CoV-2 is not the classic croup answer in this lecture.</li></ul>
+          </details>
+          <div class="callout"><strong>Teaching takeaway:</strong> Barky cough + young child ± stridor/steeple sign → parainfluenza croup.</div>
+          <p class="meta"><strong>Source revealed after submission:</strong> Professor practice question 3; parainfluenza slides 65–68.</p>
+          <button type="button" class="btn primary rebuilt-next-inline">Next question →</button>
+        </div>
+      </article>
+    
+      <article class="rebuilt-qcard" data-q="3" data-correct="2" data-answered="0">
+        <div class="rebuilt-qmeta">Question 4 of 22</div>
+        <h3 class="rebuilt-stem">A 2-year-old is hospitalized with confirmed RSV and severe respiratory distress. The older professor practice set asks which drug might have some effectiveness.</h3>
+        <div class="rebuilt-options">
+          <label class="rebuilt-option" data-option="0">
+                <input type="radio" name="rebuilt-q-3" value="0">
+                <span class="option-letter">A</span>
+                <span class="option-text">Amoxicillin</span>
+            </label><label class="rebuilt-option" data-option="1">
+                <input type="radio" name="rebuilt-q-3" value="1">
+                <span class="option-letter">B</span>
+                <span class="option-text">Azithromycin</span>
+            </label><label class="rebuilt-option" data-option="2">
+                <input type="radio" name="rebuilt-q-3" value="2">
+                <span class="option-letter">C</span>
+                <span class="option-text">Ribavirin</span>
+            </label><label class="rebuilt-option" data-option="3">
+                <input type="radio" name="rebuilt-q-3" value="3">
+                <span class="option-letter">D</span>
+                <span class="option-text">Vancomycin</span>
+            </label>
+        </div>
+        <div class="rebuilt-answer-controls">
+          <label class="confidence-label">Confidence:
+            <select class="rebuilt-confidence">
+              <option value="">—</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </label>
+          <button type="button" class="btn primary rebuilt-submit" disabled>Submit answer</button>
+        </div>
+
+        <div class="rebuilt-feedback" hidden aria-live="polite">
+          <div class="rebuilt-verdict"></div>
+          <div class="rebuilt-correct-answer">
+            <strong>Correct answer:</strong> C. Ribavirin
+          </div>
+          <p><strong>Why it fits:</strong> The older answer key lists <strong>ribavirin</strong>. However, in the current lecture transcript, the professor explicitly says to cross aerosolized ribavirin out and emphasizes <strong>supportive care</strong> instead.</p>
+          <details>
+            <summary><strong>Why the other options fail</strong></summary>
+            <ul><li>Amoxicillin, azithromycin, and vancomycin are antibacterial drugs and do not treat RSV itself.</li></ul>
+          </details>
+          <div class="callout"><strong>Teaching takeaway:</strong> For this exact legacy practice item, the keyed answer is ribavirin; for the current lecture takeaway, RSV treatment is supportive care.</div>
+          <p class="meta"><strong>Source revealed after submission:</strong> Professor practice question 4; RSV slide 60 and current lecture transcript clarification.</p>
+          <button type="button" class="btn primary rebuilt-next-inline">Next question →</button>
+        </div>
+      </article>
+    
+      <article class="rebuilt-qcard" data-q="4" data-correct="5" data-answered="0">
+        <div class="rebuilt-qmeta">Question 5 of 22</div>
+        <h3 class="rebuilt-stem">A 77-year-old with influenza is prescribed a neuraminidase inhibitor. Which viral step is prevented?</h3>
+        <div class="rebuilt-options">
+          <label class="rebuilt-option" data-option="0">
+                <input type="radio" name="rebuilt-q-4" value="0">
+                <span class="option-letter">A</span>
+                <span class="option-text">Viral entry</span>
+            </label><label class="rebuilt-option" data-option="1">
+                <input type="radio" name="rebuilt-q-4" value="1">
+                <span class="option-letter">B</span>
+                <span class="option-text">Reverse transcription</span>
+            </label><label class="rebuilt-option" data-option="2">
+                <input type="radio" name="rebuilt-q-4" value="2">
+                <span class="option-letter">C</span>
+                <span class="option-text">DNA integration</span>
+            </label><label class="rebuilt-option" data-option="3">
+                <input type="radio" name="rebuilt-q-4" value="3">
+                <span class="option-letter">D</span>
+                <span class="option-text">DNA replication</span>
+            </label><label class="rebuilt-option" data-option="4">
+                <input type="radio" name="rebuilt-q-4" value="4">
+                <span class="option-letter">E</span>
+                <span class="option-text">Protein synthesis</span>
+            </label><label class="rebuilt-option" data-option="5">
+                <input type="radio" name="rebuilt-q-4" value="5">
+                <span class="option-letter">F</span>
+                <span class="option-text">Viral exit/release</span>
+            </label>
+        </div>
+        <div class="rebuilt-answer-controls">
+          <label class="confidence-label">Confidence:
+            <select class="rebuilt-confidence">
+              <option value="">—</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </label>
+          <button type="button" class="btn primary rebuilt-submit" disabled>Submit answer</button>
+        </div>
+
+        <div class="rebuilt-feedback" hidden aria-live="polite">
+          <div class="rebuilt-verdict"></div>
+          <div class="rebuilt-correct-answer">
+            <strong>Correct answer:</strong> F. Viral exit/release
+          </div>
+          <p><strong>Why it fits:</strong> Neuraminidase cleaves sialic-acid interactions to release newly budded influenza virions. Inhibition therefore blocks <strong>viral exit/release</strong>.</p>
+          <details>
+            <summary><strong>Why the other options fail</strong></summary>
+            <ul><li>HA is associated with attachment/entry.</li><li>Influenza does not use reverse transcription or DNA integration.</li><li>Influenza is an RNA virus.</li><li>The drug does not directly block ribosomal protein synthesis.</li></ul>
+          </details>
+          <div class="callout"><strong>Teaching takeaway:</strong> HA = attach; NA = release.</div>
+          <p class="meta"><strong>Source revealed after submission:</strong> Professor practice question 5; neuraminidase mechanism slide 46.</p>
+          <button type="button" class="btn primary rebuilt-next-inline">Next question →</button>
+        </div>
+      </article>
+    
+      <article class="rebuilt-qcard" data-q="5" data-correct="1" data-answered="0">
+        <div class="rebuilt-qmeta">Question 6 of 22</div>
+        <h3 class="rebuilt-stem">Influenza accumulates point mutations so its surface proteins differ from the strain circulating the previous year. What is this called?</h3>
+        <div class="rebuilt-options">
+          <label class="rebuilt-option" data-option="0">
+                <input type="radio" name="rebuilt-q-5" value="0">
+                <span class="option-letter">A</span>
+                <span class="option-text">A different organism</span>
+            </label><label class="rebuilt-option" data-option="1">
+                <input type="radio" name="rebuilt-q-5" value="1">
+                <span class="option-letter">B</span>
+                <span class="option-text">Antigenic drift</span>
+            </label><label class="rebuilt-option" data-option="2">
+                <input type="radio" name="rebuilt-q-5" value="2">
+                <span class="option-letter">C</span>
+                <span class="option-text">Antigenic shift</span>
+            </label><label class="rebuilt-option" data-option="3">
+                <input type="radio" name="rebuilt-q-5" value="3">
+                <span class="option-letter">D</span>
+                <span class="option-text">A pandemic</span>
+            </label>
+        </div>
+        <div class="rebuilt-answer-controls">
+          <label class="confidence-label">Confidence:
+            <select class="rebuilt-confidence">
+              <option value="">—</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </label>
+          <button type="button" class="btn primary rebuilt-submit" disabled>Submit answer</button>
+        </div>
+
+        <div class="rebuilt-feedback" hidden aria-live="polite">
+          <div class="rebuilt-verdict"></div>
+          <div class="rebuilt-correct-answer">
+            <strong>Correct answer:</strong> B. Antigenic drift
+          </div>
+          <p><strong>Why it fits:</strong> Gradual accumulation of point mutations in surface epitopes is <strong>antigenic drift</strong>.</p>
+          <details>
+            <summary><strong>Why the other options fail</strong></summary>
+            <ul><li>The virus remains influenza.</li><li>Shift is reassortment of genome segments with a major antigenic change.</li><li>A pandemic is an epidemiologic outcome, not the mutation mechanism described.</li></ul>
+          </details>
+          <div class="callout"><strong>Teaching takeaway:</strong> Drift = small point mutations; shift = reassortment.</div>
+          <p class="meta"><strong>Source revealed after submission:</strong> Professor practice question 6; influenza evolution slides 50–51.</p>
+          <button type="button" class="btn primary rebuilt-next-inline">Next question →</button>
+        </div>
+      </article>
+    
+      <article class="rebuilt-qcard" data-q="6" data-correct="1" data-answered="0">
+        <div class="rebuilt-qmeta">Question 7 of 22</div>
+        <h3 class="rebuilt-stem">A patient has a classic common cold. The causative virus binds ICAM-1 on upper-respiratory epithelial cells. Which profile fits best?</h3>
+        <div class="rebuilt-options">
+          <label class="rebuilt-option" data-option="0">
+                <input type="radio" name="rebuilt-q-6" value="0">
+                <span class="option-letter">A</span>
+                <span class="option-text">Enveloped −ssRNA Orthomyxovirus</span>
+            </label><label class="rebuilt-option" data-option="1">
+                <input type="radio" name="rebuilt-q-6" value="1">
+                <span class="option-letter">B</span>
+                <span class="option-text">Non-enveloped +ssRNA Picornavirus</span>
+            </label><label class="rebuilt-option" data-option="2">
+                <input type="radio" name="rebuilt-q-6" value="2">
+                <span class="option-letter">C</span>
+                <span class="option-text">Enveloped dsDNA herpesvirus</span>
+            </label><label class="rebuilt-option" data-option="3">
+                <input type="radio" name="rebuilt-q-6" value="3">
+                <span class="option-letter">D</span>
+                <span class="option-text">Non-enveloped dsDNA adenovirus</span>
+            </label>
+        </div>
+        <div class="rebuilt-answer-controls">
+          <label class="confidence-label">Confidence:
+            <select class="rebuilt-confidence">
+              <option value="">—</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </label>
+          <button type="button" class="btn primary rebuilt-submit" disabled>Submit answer</button>
+        </div>
+
+        <div class="rebuilt-feedback" hidden aria-live="polite">
+          <div class="rebuilt-verdict"></div>
+          <div class="rebuilt-correct-answer">
+            <strong>Correct answer:</strong> B. Non-enveloped +ssRNA Picornavirus
+          </div>
+          <p><strong>Why it fits:</strong> Rhinovirus is a non-enveloped +ssRNA Picornaviridae virus that binds ICAM-1 and is the most common cause of the common cold.</p>
+          <details>
+            <summary><strong>Why the other options fail</strong></summary>
+            <ul><li>Influenza is enveloped −ssRNA.</li><li>EBV is enveloped dsDNA.</li><li>Adenovirus is non-enveloped dsDNA but does not bind ICAM-1 in this lecture.</li></ul>
+          </details>
+          <div class="callout"><strong>Teaching takeaway:</strong> ICAM-1 + common cold → rhinovirus.</div>
+          <p class="meta"><strong>Source revealed after submission:</strong> Original question based on slide 20.</p>
+          <button type="button" class="btn primary rebuilt-next-inline">Next question →</button>
+        </div>
+      </article>
+    
+      <article class="rebuilt-qcard" data-q="7" data-correct="2" data-answered="0">
+        <div class="rebuilt-qmeta">Question 8 of 22</div>
+        <h3 class="rebuilt-stem">Which feature best explains why rhinovirus and adenovirus can persist on fomites longer than many other respiratory viruses?</h3>
+        <div class="rebuilt-options">
+          <label class="rebuilt-option" data-option="0">
+                <input type="radio" name="rebuilt-q-7" value="0">
+                <span class="option-letter">A</span>
+                <span class="option-text">Positive-sense RNA</span>
+            </label><label class="rebuilt-option" data-option="1">
+                <input type="radio" name="rebuilt-q-7" value="1">
+                <span class="option-letter">B</span>
+                <span class="option-text">Replication in the nucleus</span>
+            </label><label class="rebuilt-option" data-option="2">
+                <input type="radio" name="rebuilt-q-7" value="2">
+                <span class="option-letter">C</span>
+                <span class="option-text">Absence of a lipid envelope</span>
+            </label><label class="rebuilt-option" data-option="3">
+                <input type="radio" name="rebuilt-q-7" value="3">
+                <span class="option-letter">D</span>
+                <span class="option-text">Segmented genome</span>
+            </label>
+        </div>
+        <div class="rebuilt-answer-controls">
+          <label class="confidence-label">Confidence:
+            <select class="rebuilt-confidence">
+              <option value="">—</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </label>
+          <button type="button" class="btn primary rebuilt-submit" disabled>Submit answer</button>
+        </div>
+
+        <div class="rebuilt-feedback" hidden aria-live="polite">
+          <div class="rebuilt-verdict"></div>
+          <div class="rebuilt-correct-answer">
+            <strong>Correct answer:</strong> C. Absence of a lipid envelope
+          </div>
+          <p><strong>Why it fits:</strong> Non-enveloped viruses have a more environmentally resistant naked protein capsid and are less susceptible to detergents/alcohol than enveloped viruses.</p>
+          <details>
+            <summary><strong>Why the other options fail</strong></summary>
+            <ul><li>Genome polarity does not determine detergent sensitivity.</li><li>Adenovirus is a DNA virus; rhinovirus replicates in the cytoplasm.</li><li>Neither requires a segmented genome.</li></ul>
+          </details>
+          <div class="callout"><strong>Teaching takeaway:</strong> No envelope → tougher environmental persistence.</div>
+          <p class="meta"><strong>Source revealed after submission:</strong> Original question based on slides 9, 20, and 21.</p>
+          <button type="button" class="btn primary rebuilt-next-inline">Next question →</button>
+        </div>
+      </article>
+    
+      <article class="rebuilt-qcard" data-q="8" data-correct="1" data-answered="0">
+        <div class="rebuilt-qmeta">Question 9 of 22</div>
+        <h3 class="rebuilt-stem">A negative-sense RNA respiratory virus enters a cell. Which must occur before the viral genome can be translated by host ribosomes?</h3>
+        <div class="rebuilt-options">
+          <label class="rebuilt-option" data-option="0">
+                <input type="radio" name="rebuilt-q-8" value="0">
+                <span class="option-letter">A</span>
+                <span class="option-text">Integration into host DNA</span>
+            </label><label class="rebuilt-option" data-option="1">
+                <input type="radio" name="rebuilt-q-8" value="1">
+                <span class="option-letter">B</span>
+                <span class="option-text">Synthesis of a complementary positive-sense RNA</span>
+            </label><label class="rebuilt-option" data-option="2">
+                <input type="radio" name="rebuilt-q-8" value="2">
+                <span class="option-letter">C</span>
+                <span class="option-text">Conversion to double-stranded DNA</span>
+            </label><label class="rebuilt-option" data-option="3">
+                <input type="radio" name="rebuilt-q-8" value="3">
+                <span class="option-letter">D</span>
+                <span class="option-text">Acquisition of a lipid envelope</span>
+            </label>
+        </div>
+        <div class="rebuilt-answer-controls">
+          <label class="confidence-label">Confidence:
+            <select class="rebuilt-confidence">
+              <option value="">—</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </label>
+          <button type="button" class="btn primary rebuilt-submit" disabled>Submit answer</button>
+        </div>
+
+        <div class="rebuilt-feedback" hidden aria-live="polite">
+          <div class="rebuilt-verdict"></div>
+          <div class="rebuilt-correct-answer">
+            <strong>Correct answer:</strong> B. Synthesis of a complementary positive-sense RNA
+          </div>
+          <p><strong>Why it fits:</strong> Negative-sense RNA cannot function directly as mRNA; the virus must use its own polymerase to generate a complementary readable strand.</p>
+          <details>
+            <summary><strong>Why the other options fail</strong></summary>
+            <ul><li>Integration is a retroviral concept.</li><li>No DNA intermediate is required here.</li><li>Envelope acquisition occurs during viral budding, not before translation.</li></ul>
+          </details>
+          <div class="callout"><strong>Teaching takeaway:</strong> −ssRNA → bring polymerase → make readable complement first.</div>
+          <p class="meta"><strong>Source revealed after submission:</strong> Original question based on slide 7.</p>
+          <button type="button" class="btn primary rebuilt-next-inline">Next question →</button>
+        </div>
+      </article>
+    
+      <article class="rebuilt-qcard" data-q="9" data-correct="2" data-answered="0">
+        <div class="rebuilt-qmeta">Question 10 of 22</div>
+        <h3 class="rebuilt-stem">Which respiratory virus is the lecture’s major exception to the rule that RNA viruses replicate in the cytoplasm?</h3>
+        <div class="rebuilt-options">
+          <label class="rebuilt-option" data-option="0">
+                <input type="radio" name="rebuilt-q-9" value="0">
+                <span class="option-letter">A</span>
+                <span class="option-text">RSV</span>
+            </label><label class="rebuilt-option" data-option="1">
+                <input type="radio" name="rebuilt-q-9" value="1">
+                <span class="option-letter">B</span>
+                <span class="option-text">Parainfluenza</span>
+            </label><label class="rebuilt-option" data-option="2">
+                <input type="radio" name="rebuilt-q-9" value="2">
+                <span class="option-letter">C</span>
+                <span class="option-text">Influenza</span>
+            </label><label class="rebuilt-option" data-option="3">
+                <input type="radio" name="rebuilt-q-9" value="3">
+                <span class="option-letter">D</span>
+                <span class="option-text">Rhinovirus</span>
+            </label><label class="rebuilt-option" data-option="4">
+                <input type="radio" name="rebuilt-q-9" value="4">
+                <span class="option-letter">E</span>
+                <span class="option-text">Coronavirus</span>
+            </label>
+        </div>
+        <div class="rebuilt-answer-controls">
+          <label class="confidence-label">Confidence:
+            <select class="rebuilt-confidence">
+              <option value="">—</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </label>
+          <button type="button" class="btn primary rebuilt-submit" disabled>Submit answer</button>
+        </div>
+
+        <div class="rebuilt-feedback" hidden aria-live="polite">
+          <div class="rebuilt-verdict"></div>
+          <div class="rebuilt-correct-answer">
+            <strong>Correct answer:</strong> C. Influenza
+          </div>
+          <p><strong>Why it fits:</strong> Influenza is the only RNA virus emphasized in the lecture as replicating in the <strong>nucleus</strong>.</p>
+          <details>
+            <summary><strong>Why the other options fail</strong></summary>
+            <ul><li>RSV, parainfluenza, rhinovirus, and coronavirus follow the cytoplasmic RNA-virus rule in this lecture.</li></ul>
+          </details>
+          <div class="callout"><strong>Teaching takeaway:</strong> Influenza = segmented −ssRNA + nuclear replication.</div>
+          <p class="meta"><strong>Source revealed after submission:</strong> Original question based on influenza slide 40.</p>
+          <button type="button" class="btn primary rebuilt-next-inline">Next question →</button>
+        </div>
+      </article>
+    
+      <article class="rebuilt-qcard" data-q="10" data-correct="1" data-answered="0">
+        <div class="rebuilt-qmeta">Question 11 of 22</div>
+        <h3 class="rebuilt-stem">Which influenza surface protein is most directly responsible for attachment to sialic acid on host cells?</h3>
+        <div class="rebuilt-options">
+          <label class="rebuilt-option" data-option="0">
+                <input type="radio" name="rebuilt-q-10" value="0">
+                <span class="option-letter">A</span>
+                <span class="option-text">M2</span>
+            </label><label class="rebuilt-option" data-option="1">
+                <input type="radio" name="rebuilt-q-10" value="1">
+                <span class="option-letter">B</span>
+                <span class="option-text">Hemagglutinin</span>
+            </label><label class="rebuilt-option" data-option="2">
+                <input type="radio" name="rebuilt-q-10" value="2">
+                <span class="option-letter">C</span>
+                <span class="option-text">Neuraminidase</span>
+            </label><label class="rebuilt-option" data-option="3">
+                <input type="radio" name="rebuilt-q-10" value="3">
+                <span class="option-letter">D</span>
+                <span class="option-text">Nucleocapsid protein</span>
+            </label>
+        </div>
+        <div class="rebuilt-answer-controls">
+          <label class="confidence-label">Confidence:
+            <select class="rebuilt-confidence">
+              <option value="">—</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </label>
+          <button type="button" class="btn primary rebuilt-submit" disabled>Submit answer</button>
+        </div>
+
+        <div class="rebuilt-feedback" hidden aria-live="polite">
+          <div class="rebuilt-verdict"></div>
+          <div class="rebuilt-correct-answer">
+            <strong>Correct answer:</strong> B. Hemagglutinin
+          </div>
+          <p><strong>Why it fits:</strong> Hemagglutinin mediates attachment to sialic-acid-containing receptors.</p>
+          <details>
+            <summary><strong>Why the other options fail</strong></summary>
+            <ul><li>M2 helps with penetration/uncoating in influenza A.</li><li>Neuraminidase is central to virion release.</li><li>Nucleocapsid proteins are not the receptor-binding surface spike in this lecture.</li></ul>
+          </details>
+          <div class="callout"><strong>Teaching takeaway:</strong> HA attaches; NA releases.</div>
+          <p class="meta"><strong>Source revealed after submission:</strong> Original question based on slides 41–42.</p>
+          <button type="button" class="btn primary rebuilt-next-inline">Next question →</button>
+        </div>
+      </article>
+    
+      <article class="rebuilt-qcard" data-q="11" data-correct="1" data-answered="0">
+        <div class="rebuilt-qmeta">Question 12 of 22</div>
+        <h3 class="rebuilt-stem">Two influenza viruses infect the same host cell and exchange genome segments, generating a novel antigenic combination. What mechanism occurred?</h3>
+        <div class="rebuilt-options">
+          <label class="rebuilt-option" data-option="0">
+                <input type="radio" name="rebuilt-q-11" value="0">
+                <span class="option-letter">A</span>
+                <span class="option-text">Antigenic drift</span>
+            </label><label class="rebuilt-option" data-option="1">
+                <input type="radio" name="rebuilt-q-11" value="1">
+                <span class="option-letter">B</span>
+                <span class="option-text">Antigenic shift</span>
+            </label><label class="rebuilt-option" data-option="2">
+                <input type="radio" name="rebuilt-q-11" value="2">
+                <span class="option-letter">C</span>
+                <span class="option-text">Latency</span>
+            </label><label class="rebuilt-option" data-option="3">
+                <input type="radio" name="rebuilt-q-11" value="3">
+                <span class="option-letter">D</span>
+                <span class="option-text">Complementation without reassortment</span>
+            </label>
+        </div>
+        <div class="rebuilt-answer-controls">
+          <label class="confidence-label">Confidence:
+            <select class="rebuilt-confidence">
+              <option value="">—</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </label>
+          <button type="button" class="btn primary rebuilt-submit" disabled>Submit answer</button>
+        </div>
+
+        <div class="rebuilt-feedback" hidden aria-live="polite">
+          <div class="rebuilt-verdict"></div>
+          <div class="rebuilt-correct-answer">
+            <strong>Correct answer:</strong> B. Antigenic shift
+          </div>
+          <p><strong>Why it fits:</strong> Reassortment of the segmented influenza genome is <strong>antigenic shift</strong>.</p>
+          <details>
+            <summary><strong>Why the other options fail</strong></summary>
+            <ul><li>Drift is gradual point mutation.</li><li>Latency is not the described influenza process.</li><li>The question explicitly describes reassortment.</li></ul>
+          </details>
+          <div class="callout"><strong>Teaching takeaway:</strong> Segment reassortment = shift = pandemic potential.</div>
+          <p class="meta"><strong>Source revealed after submission:</strong> Original question based on slides 50–51.</p>
+          <button type="button" class="btn primary rebuilt-next-inline">Next question →</button>
+        </div>
+      </article>
+    
+      <article class="rebuilt-qcard" data-q="12" data-correct="0" data-answered="0">
+        <div class="rebuilt-qmeta">Question 13 of 22</div>
+        <h3 class="rebuilt-stem">An infant has rhinorrhea, wheezing, tachypnea, increased work of breathing, and apnea. Which viral feature best fits the most likely cause?</h3>
+        <div class="rebuilt-options">
+          <label class="rebuilt-option" data-option="0">
+                <input type="radio" name="rebuilt-q-12" value="0">
+                <span class="option-letter">A</span>
+                <span class="option-text">F protein that promotes syncytium formation</span>
+            </label><label class="rebuilt-option" data-option="1">
+                <input type="radio" name="rebuilt-q-12" value="1">
+                <span class="option-letter">B</span>
+                <span class="option-text">ICAM-1 binding by a non-enveloped virus</span>
+            </label><label class="rebuilt-option" data-option="2">
+                <input type="radio" name="rebuilt-q-12" value="2">
+                <span class="option-letter">C</span>
+                <span class="option-text">Latency in B cells</span>
+            </label><label class="rebuilt-option" data-option="3">
+                <input type="radio" name="rebuilt-q-12" value="3">
+                <span class="option-letter">D</span>
+                <span class="option-text">Segmented genome with major antigenic shift</span>
+            </label>
+        </div>
+        <div class="rebuilt-answer-controls">
+          <label class="confidence-label">Confidence:
+            <select class="rebuilt-confidence">
+              <option value="">—</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </label>
+          <button type="button" class="btn primary rebuilt-submit" disabled>Submit answer</button>
+        </div>
+
+        <div class="rebuilt-feedback" hidden aria-live="polite">
+          <div class="rebuilt-verdict"></div>
+          <div class="rebuilt-correct-answer">
+            <strong>Correct answer:</strong> A. F protein that promotes syncytium formation
+          </div>
+          <p><strong>Why it fits:</strong> RSV is the classic severe infant bronchiolitis virus. Its F protein promotes membrane fusion and syncytia.</p>
+          <details>
+            <summary><strong>Why the other options fail</strong></summary>
+            <ul><li>ICAM-1 is rhinovirus.</li><li>B-cell latency is EBV.</li><li>Segmented shift is influenza.</li></ul>
+          </details>
+          <div class="callout"><strong>Teaching takeaway:</strong> Infant bronchiolitis + F protein/syncytia → RSV.</div>
+          <p class="meta"><strong>Source revealed after submission:</strong> Original question based on RSV slides 55–59.</p>
+          <button type="button" class="btn primary rebuilt-next-inline">Next question →</button>
+        </div>
+      </article>
+    
+      <article class="rebuilt-qcard" data-q="13" data-correct="2" data-answered="0">
+        <div class="rebuilt-qmeta">Question 14 of 22</div>
+        <h3 class="rebuilt-stem">Which statement about RSV is most consistent with the professor’s lecture?</h3>
+        <div class="rebuilt-options">
+          <label class="rebuilt-option" data-option="0">
+                <input type="radio" name="rebuilt-q-13" value="0">
+                <span class="option-letter">A</span>
+                <span class="option-text">Natural infection provides lifelong sterilizing immunity</span>
+            </label><label class="rebuilt-option" data-option="1">
+                <input type="radio" name="rebuilt-q-13" value="1">
+                <span class="option-letter">B</span>
+                <span class="option-text">Viremia is a major part of its pathogenesis</span>
+            </label><label class="rebuilt-option" data-option="2">
+                <input type="radio" name="rebuilt-q-13" value="2">
+                <span class="option-letter">C</span>
+                <span class="option-text">Reinfection can occur and infection generally spreads along respiratory epithelium</span>
+            </label><label class="rebuilt-option" data-option="3">
+                <input type="radio" name="rebuilt-q-13" value="3">
+                <span class="option-letter">D</span>
+                <span class="option-text">It is a segmented RNA virus</span>
+            </label>
+        </div>
+        <div class="rebuilt-answer-controls">
+          <label class="confidence-label">Confidence:
+            <select class="rebuilt-confidence">
+              <option value="">—</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </label>
+          <button type="button" class="btn primary rebuilt-submit" disabled>Submit answer</button>
+        </div>
+
+        <div class="rebuilt-feedback" hidden aria-live="polite">
+          <div class="rebuilt-verdict"></div>
+          <div class="rebuilt-correct-answer">
+            <strong>Correct answer:</strong> C. Reinfection can occur and infection generally spreads along respiratory epithelium
+          </div>
+          <p><strong>Why it fits:</strong> The lecture states that RSV usually has no viremia, natural infection does not prevent reinfection, and spread occurs along respiratory epithelium.</p>
+          <details>
+            <summary><strong>Why the other options fail</strong></summary>
+            <ul><li>Reinfection is common.</li><li>The professor specifically said no viremia.</li><li>RSV is non-segmented.</li></ul>
+          </details>
+          <div class="callout"><strong>Teaching takeaway:</strong> RSV = epithelial spread, no viremia, reinfection common.</div>
+          <p class="meta"><strong>Source revealed after submission:</strong> Original question based on RSV pathogenesis slide 57.</p>
+          <button type="button" class="btn primary rebuilt-next-inline">Next question →</button>
+        </div>
+      </article>
+    
+      <article class="rebuilt-qcard" data-q="14" data-correct="1" data-answered="0">
+        <div class="rebuilt-qmeta">Question 15 of 22</div>
+        <h3 class="rebuilt-stem">A child has bronchiolitis during winter–spring, but testing is negative for RSV. Which virus did the lecture describe as the second most common cause of bronchiolitis?</h3>
+        <div class="rebuilt-options">
+          <label class="rebuilt-option" data-option="0">
+                <input type="radio" name="rebuilt-q-14" value="0">
+                <span class="option-letter">A</span>
+                <span class="option-text">Adenovirus</span>
+            </label><label class="rebuilt-option" data-option="1">
+                <input type="radio" name="rebuilt-q-14" value="1">
+                <span class="option-letter">B</span>
+                <span class="option-text">Human metapneumovirus</span>
+            </label><label class="rebuilt-option" data-option="2">
+                <input type="radio" name="rebuilt-q-14" value="2">
+                <span class="option-letter">C</span>
+                <span class="option-text">Mumps virus</span>
+            </label><label class="rebuilt-option" data-option="3">
+                <input type="radio" name="rebuilt-q-14" value="3">
+                <span class="option-letter">D</span>
+                <span class="option-text">EBV</span>
+            </label>
+        </div>
+        <div class="rebuilt-answer-controls">
+          <label class="confidence-label">Confidence:
+            <select class="rebuilt-confidence">
+              <option value="">—</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </label>
+          <button type="button" class="btn primary rebuilt-submit" disabled>Submit answer</button>
+        </div>
+
+        <div class="rebuilt-feedback" hidden aria-live="polite">
+          <div class="rebuilt-verdict"></div>
+          <div class="rebuilt-correct-answer">
+            <strong>Correct answer:</strong> B. Human metapneumovirus
+          </div>
+          <p><strong>Why it fits:</strong> Human metapneumovirus was described as second to RSV as a cause of bronchiolitis in winter–spring.</p>
+          <details>
+            <summary><strong>Why the other options fail</strong></summary>
+            <ul><li>The other choices are not the lecture’s #2 bronchiolitis association.</li></ul>
+          </details>
+          <div class="callout"><strong>Teaching takeaway:</strong> Bronchiolitis hierarchy in this lecture: RSV first, hMPV second.</div>
+          <p class="meta"><strong>Source revealed after submission:</strong> Original question based on slide 63.</p>
+          <button type="button" class="btn primary rebuilt-next-inline">Next question →</button>
+        </div>
+      </article>
+    
+      <article class="rebuilt-qcard" data-q="15" data-correct="1" data-answered="0">
+        <div class="rebuilt-qmeta">Question 16 of 22</div>
+        <h3 class="rebuilt-stem">A 2-year-old has low-grade fever, rhinorrhea, barky cough, and inspiratory stridor. Which imaging clue would reinforce the most likely diagnosis?</h3>
+        <div class="rebuilt-options">
+          <label class="rebuilt-option" data-option="0">
+                <input type="radio" name="rebuilt-q-15" value="0">
+                <span class="option-letter">A</span>
+                <span class="option-text">Diffuse bilateral alveolar opacities</span>
+            </label><label class="rebuilt-option" data-option="1">
+                <input type="radio" name="rebuilt-q-15" value="1">
+                <span class="option-letter">B</span>
+                <span class="option-text">Steeple sign from upper-airway narrowing</span>
+            </label><label class="rebuilt-option" data-option="2">
+                <input type="radio" name="rebuilt-q-15" value="2">
+                <span class="option-letter">C</span>
+                <span class="option-text">Large pleural effusion</span>
+            </label><label class="rebuilt-option" data-option="3">
+                <input type="radio" name="rebuilt-q-15" value="3">
+                <span class="option-letter">D</span>
+                <span class="option-text">Cavitary lung lesion</span>
+            </label>
+        </div>
+        <div class="rebuilt-answer-controls">
+          <label class="confidence-label">Confidence:
+            <select class="rebuilt-confidence">
+              <option value="">—</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </label>
+          <button type="button" class="btn primary rebuilt-submit" disabled>Submit answer</button>
+        </div>
+
+        <div class="rebuilt-feedback" hidden aria-live="polite">
+          <div class="rebuilt-verdict"></div>
+          <div class="rebuilt-correct-answer">
+            <strong>Correct answer:</strong> B. Steeple sign from upper-airway narrowing
+          </div>
+          <p><strong>Why it fits:</strong> Parainfluenza croup produces subglottic/upper-airway narrowing and the classic steeple sign.</p>
+          <details>
+            <summary><strong>Why the other options fail</strong></summary>
+            <ul><li>The other findings point toward parenchymal/pleural disease rather than classic croup.</li></ul>
+          </details>
+          <div class="callout"><strong>Teaching takeaway:</strong> Croup = barky cough + stridor + steeple sign.</div>
+          <p class="meta"><strong>Source revealed after submission:</strong> Original question based on slide 67.</p>
+          <button type="button" class="btn primary rebuilt-next-inline">Next question →</button>
+        </div>
+      </article>
+    
+      <article class="rebuilt-qcard" data-q="16" data-correct="2" data-answered="0">
+        <div class="rebuilt-qmeta">Question 17 of 22</div>
+        <h3 class="rebuilt-stem">Which statement best distinguishes parainfluenza from influenza in this lecture?</h3>
+        <div class="rebuilt-options">
+          <label class="rebuilt-option" data-option="0">
+                <input type="radio" name="rebuilt-q-16" value="0">
+                <span class="option-letter">A</span>
+                <span class="option-text">Parainfluenza is non-enveloped</span>
+            </label><label class="rebuilt-option" data-option="1">
+                <input type="radio" name="rebuilt-q-16" value="1">
+                <span class="option-letter">B</span>
+                <span class="option-text">Parainfluenza is a DNA virus</span>
+            </label><label class="rebuilt-option" data-option="2">
+                <input type="radio" name="rebuilt-q-16" value="2">
+                <span class="option-letter">C</span>
+                <span class="option-text">Parainfluenza has stable antigenic makeup without significant drift/shift</span>
+            </label><label class="rebuilt-option" data-option="3">
+                <input type="radio" name="rebuilt-q-16" value="3">
+                <span class="option-letter">D</span>
+                <span class="option-text">Parainfluenza replicates in the nucleus</span>
+            </label>
+        </div>
+        <div class="rebuilt-answer-controls">
+          <label class="confidence-label">Confidence:
+            <select class="rebuilt-confidence">
+              <option value="">—</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </label>
+          <button type="button" class="btn primary rebuilt-submit" disabled>Submit answer</button>
+        </div>
+
+        <div class="rebuilt-feedback" hidden aria-live="polite">
+          <div class="rebuilt-verdict"></div>
+          <div class="rebuilt-correct-answer">
+            <strong>Correct answer:</strong> C. Parainfluenza has stable antigenic makeup without significant drift/shift
+          </div>
+          <p><strong>Why it fits:</strong> Parainfluenza is an enveloped −ssRNA virus, but its antigenic makeup is relatively stable and the lecture says it has no significant drift or shift.</p>
+          <details>
+            <summary><strong>Why the other options fail</strong></summary>
+            <ul><li>It is enveloped.</li><li>It is RNA, not DNA.</li><li>It replicates in the cytoplasm.</li></ul>
+          </details>
+          <div class="callout"><strong>Teaching takeaway:</strong> Parainfluenza ≠ mini-influenza: no major drift/shift and classic croup association.</div>
+          <p class="meta"><strong>Source revealed after submission:</strong> Original question based on slide 65.</p>
+          <button type="button" class="btn primary rebuilt-next-inline">Next question →</button>
+        </div>
+      </article>
+    
+      <article class="rebuilt-qcard" data-q="17" data-correct="1" data-answered="0">
+        <div class="rebuilt-qmeta">Question 18 of 22</div>
+        <h3 class="rebuilt-stem">Which profile is most consistent with a seasonal coronavirus causing a common cold?</h3>
+        <div class="rebuilt-options">
+          <label class="rebuilt-option" data-option="0">
+                <input type="radio" name="rebuilt-q-17" value="0">
+                <span class="option-letter">A</span>
+                <span class="option-text">Non-enveloped +ssRNA</span>
+            </label><label class="rebuilt-option" data-option="1">
+                <input type="radio" name="rebuilt-q-17" value="1">
+                <span class="option-letter">B</span>
+                <span class="option-text">Enveloped +ssRNA</span>
+            </label><label class="rebuilt-option" data-option="2">
+                <input type="radio" name="rebuilt-q-17" value="2">
+                <span class="option-letter">C</span>
+                <span class="option-text">Enveloped −ssRNA</span>
+            </label><label class="rebuilt-option" data-option="3">
+                <input type="radio" name="rebuilt-q-17" value="3">
+                <span class="option-letter">D</span>
+                <span class="option-text">Non-enveloped dsDNA</span>
+            </label>
+        </div>
+        <div class="rebuilt-answer-controls">
+          <label class="confidence-label">Confidence:
+            <select class="rebuilt-confidence">
+              <option value="">—</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </label>
+          <button type="button" class="btn primary rebuilt-submit" disabled>Submit answer</button>
+        </div>
+
+        <div class="rebuilt-feedback" hidden aria-live="polite">
+          <div class="rebuilt-verdict"></div>
+          <div class="rebuilt-correct-answer">
+            <strong>Correct answer:</strong> B. Enveloped +ssRNA
+          </div>
+          <p><strong>Why it fits:</strong> Coronaviruses are enveloped positive-sense single-stranded RNA viruses.</p>
+          <details>
+            <summary><strong>Why the other options fail</strong></summary>
+            <ul><li>Rhinovirus is non-enveloped +ssRNA.</li><li>Influenza/RSV/parainfluenza are enveloped −ssRNA.</li><li>Adenovirus is non-enveloped dsDNA.</li></ul>
+          </details>
+          <div class="callout"><strong>Teaching takeaway:</strong> Coronavirus = enveloped +ssRNA.</div>
+          <p class="meta"><strong>Source revealed after submission:</strong> Original question based on slide 70.</p>
+          <button type="button" class="btn primary rebuilt-next-inline">Next question →</button>
+        </div>
+      </article>
+    
+      <article class="rebuilt-qcard" data-q="18" data-correct="1" data-answered="0">
+        <div class="rebuilt-qmeta">Question 19 of 22</div>
+        <h3 class="rebuilt-stem">Which coronavirus is most strongly associated with camels in the lecture?</h3>
+        <div class="rebuilt-options">
+          <label class="rebuilt-option" data-option="0">
+                <input type="radio" name="rebuilt-q-18" value="0">
+                <span class="option-letter">A</span>
+                <span class="option-text">SARS-CoV</span>
+            </label><label class="rebuilt-option" data-option="1">
+                <input type="radio" name="rebuilt-q-18" value="1">
+                <span class="option-letter">B</span>
+                <span class="option-text">MERS-CoV</span>
+            </label><label class="rebuilt-option" data-option="2">
+                <input type="radio" name="rebuilt-q-18" value="2">
+                <span class="option-letter">C</span>
+                <span class="option-text">SARS-CoV-2</span>
+            </label><label class="rebuilt-option" data-option="3">
+                <input type="radio" name="rebuilt-q-18" value="3">
+                <span class="option-letter">D</span>
+                <span class="option-text">OC43</span>
+            </label>
+        </div>
+        <div class="rebuilt-answer-controls">
+          <label class="confidence-label">Confidence:
+            <select class="rebuilt-confidence">
+              <option value="">—</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </label>
+          <button type="button" class="btn primary rebuilt-submit" disabled>Submit answer</button>
+        </div>
+
+        <div class="rebuilt-feedback" hidden aria-live="polite">
+          <div class="rebuilt-verdict"></div>
+          <div class="rebuilt-correct-answer">
+            <strong>Correct answer:</strong> B. MERS-CoV
+          </div>
+          <p><strong>Why it fits:</strong> MERS was highlighted as a zoonosis associated with camels (and bats).</p>
+          <details>
+            <summary><strong>Why the other options fail</strong></summary>
+            <ul><li>The other listed coronaviruses were not paired with the camel clue in this lecture.</li></ul>
+          </details>
+          <div class="callout"><strong>Teaching takeaway:</strong> MERS → Middle East + camels.</div>
+          <p class="meta"><strong>Source revealed after submission:</strong> Original question based on slide 73.</p>
+          <button type="button" class="btn primary rebuilt-next-inline">Next question →</button>
+        </div>
+      </article>
+    
+      <article class="rebuilt-qcard" data-q="19" data-correct="0" data-answered="0">
+        <div class="rebuilt-qmeta">Question 20 of 22</div>
+        <h3 class="rebuilt-stem">A hospitalized patient with COVID-19 is hypoxic. Which treatment does the lecture specifically connect to hypoxia?</h3>
+        <div class="rebuilt-options">
+          <label class="rebuilt-option" data-option="0">
+                <input type="radio" name="rebuilt-q-19" value="0">
+                <span class="option-letter">A</span>
+                <span class="option-text">Dexamethasone</span>
+            </label><label class="rebuilt-option" data-option="1">
+                <input type="radio" name="rebuilt-q-19" value="1">
+                <span class="option-letter">B</span>
+                <span class="option-text">Oseltamivir</span>
+            </label><label class="rebuilt-option" data-option="2">
+                <input type="radio" name="rebuilt-q-19" value="2">
+                <span class="option-letter">C</span>
+                <span class="option-text">Palivizumab</span>
+            </label><label class="rebuilt-option" data-option="3">
+                <input type="radio" name="rebuilt-q-19" value="3">
+                <span class="option-letter">D</span>
+                <span class="option-text">Cidofovir</span>
+            </label>
+        </div>
+        <div class="rebuilt-answer-controls">
+          <label class="confidence-label">Confidence:
+            <select class="rebuilt-confidence">
+              <option value="">—</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </label>
+          <button type="button" class="btn primary rebuilt-submit" disabled>Submit answer</button>
+        </div>
+
+        <div class="rebuilt-feedback" hidden aria-live="polite">
+          <div class="rebuilt-verdict"></div>
+          <div class="rebuilt-correct-answer">
+            <strong>Correct answer:</strong> A. Dexamethasone
+          </div>
+          <p><strong>Why it fits:</strong> The lecture treatment table specifically connects hypoxic COVID-19 with <strong>dexamethasone</strong>.</p>
+          <details>
+            <summary><strong>Why the other options fail</strong></summary>
+            <ul><li>Oseltamivir treats influenza.</li><li>Palivizumab is an RSV monoclonal antibody used for prevention/prophylaxis.</li><li>Cidofovir was discussed for severe adenovirus in immunocompromised hosts.</li></ul>
+          </details>
+          <div class="callout"><strong>Teaching takeaway:</strong> COVID + hypoxia → dexamethasone in this lecture.</div>
+          <p class="meta"><strong>Source revealed after submission:</strong> Original question based on slide 81.</p>
+          <button type="button" class="btn primary rebuilt-next-inline">Next question →</button>
+        </div>
+      </article>
+    
+      <article class="rebuilt-qcard" data-q="20" data-correct="1" data-answered="0">
+        <div class="rebuilt-qmeta">Question 21 of 22</div>
+        <h3 class="rebuilt-stem">Which viral syndrome pairing is most accurate according to the lecture?</h3>
+        <div class="rebuilt-options">
+          <label class="rebuilt-option" data-option="0">
+                <input type="radio" name="rebuilt-q-20" value="0">
+                <span class="option-letter">A</span>
+                <span class="option-text">Rhinovirus — classic croup</span>
+            </label><label class="rebuilt-option" data-option="1">
+                <input type="radio" name="rebuilt-q-20" value="1">
+                <span class="option-letter">B</span>
+                <span class="option-text">RSV — most common infant bronchiolitis</span>
+            </label><label class="rebuilt-option" data-option="2">
+                <input type="radio" name="rebuilt-q-20" value="2">
+                <span class="option-letter">C</span>
+                <span class="option-text">EBV — parotitis with orchitis</span>
+            </label><label class="rebuilt-option" data-option="3">
+                <input type="radio" name="rebuilt-q-20" value="3">
+                <span class="option-letter">D</span>
+                <span class="option-text">Mumps — common cold only</span>
+            </label>
+        </div>
+        <div class="rebuilt-answer-controls">
+          <label class="confidence-label">Confidence:
+            <select class="rebuilt-confidence">
+              <option value="">—</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </label>
+          <button type="button" class="btn primary rebuilt-submit" disabled>Submit answer</button>
+        </div>
+
+        <div class="rebuilt-feedback" hidden aria-live="polite">
+          <div class="rebuilt-verdict"></div>
+          <div class="rebuilt-correct-answer">
+            <strong>Correct answer:</strong> B. RSV — most common infant bronchiolitis
+          </div>
+          <p><strong>Why it fits:</strong> RSV is the major infant bronchiolitis virus in this lecture.</p>
+          <details>
+            <summary><strong>Why the other options fail</strong></summary>
+            <ul><li>Parainfluenza causes classic croup.</li><li>EBV causes mono; mumps causes parotitis/orchitis.</li><li>Mumps is systemic and not limited to common-cold illness.</li></ul>
+          </details>
+          <div class="callout"><strong>Teaching takeaway:</strong> Use the signature syndrome to narrow the virus before memorizing structure.</div>
+          <p class="meta"><strong>Source revealed after submission:</strong> Original integrative question.</p>
+          <button type="button" class="btn primary rebuilt-next-inline">Next question →</button>
+        </div>
+      </article>
+    
+      <article class="rebuilt-qcard" data-q="21" data-correct="1" data-answered="0">
+        <div class="rebuilt-qmeta">Question 22 of 22</div>
+        <h3 class="rebuilt-stem">A patient with a viral URI starts to improve, then abruptly worsens with new focal bacterial symptoms. Which lecture mechanism best explains this?</h3>
+        <div class="rebuilt-options">
+          <label class="rebuilt-option" data-option="0">
+                <input type="radio" name="rebuilt-q-21" value="0">
+                <span class="option-letter">A</span>
+                <span class="option-text">Antigenic shift</span>
+            </label><label class="rebuilt-option" data-option="1">
+                <input type="radio" name="rebuilt-q-21" value="1">
+                <span class="option-letter">B</span>
+                <span class="option-text">Epithelial damage and impaired mucociliary clearance after viral infection</span>
+            </label><label class="rebuilt-option" data-option="2">
+                <input type="radio" name="rebuilt-q-21" value="2">
+                <span class="option-letter">C</span>
+                <span class="option-text">B-cell latency</span>
+            </label><label class="rebuilt-option" data-option="3">
+                <input type="radio" name="rebuilt-q-21" value="3">
+                <span class="option-letter">D</span>
+                <span class="option-text">Direct viral integration into host DNA</span>
+            </label>
+        </div>
+        <div class="rebuilt-answer-controls">
+          <label class="confidence-label">Confidence:
+            <select class="rebuilt-confidence">
+              <option value="">—</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </label>
+          <button type="button" class="btn primary rebuilt-submit" disabled>Submit answer</button>
+        </div>
+
+        <div class="rebuilt-feedback" hidden aria-live="polite">
+          <div class="rebuilt-verdict"></div>
+          <div class="rebuilt-correct-answer">
+            <strong>Correct answer:</strong> B. Epithelial damage and impaired mucociliary clearance after viral infection
+          </div>
+          <p><strong>Why it fits:</strong> Respiratory viral infection can damage ciliated epithelium and impair clearance, predisposing to secondary bacterial infection.</p>
+          <details>
+            <summary><strong>Why the other options fail</strong></summary>
+            <ul><li>Shift is influenza reassortment.</li><li>B-cell latency is EBV.</li><li>The lecture did not explain secondary bacterial infection through viral integration.</li></ul>
+          </details>
+          <div class="callout"><strong>Teaching takeaway:</strong> Viral epithelial injury → impaired clearance → secondary bacterial infection.</div>
+          <p class="meta"><strong>Source revealed after submission:</strong> Original question based on general pathogenesis slide 11.</p>
+          <button type="button" class="btn primary rebuilt-next-inline">Next question →</button>
+        </div>
+      </article>
+    
+  </div>
 </section>
+
 
 <section id="exam" class="exam-sheet">
   <h2>8. Printable exam sheet</h2>
@@ -385,71 +1575,153 @@ figures.forEach((f,i)=>{
 });
 document.querySelectorAll('.fig-reveal').forEach(b=>b.onclick=()=>{b.nextElementSibling.classList.remove('hidden');b.disabled=true});
 
-// Practice
-let qIndex=0;
-// Practice progress works even when this downloaded HTML is opened from file://
-// and the browser blocks localStorage for local files.
-let practiceStorageAvailable = true;
-function loadQState(){
-  try {
-    const raw = window.localStorage ? localStorage.getItem('viralGuideQState') : null;
-    if (!raw) return {};
-    const parsed = JSON.parse(raw);
-    return (parsed && typeof parsed === 'object') ? parsed : {};
-  } catch (err) {
-    practiceStorageAvailable = false;
-    return {};
-  }
-}
-let qState = loadQState();
-function saveQ(){
-  if (!practiceStorageAvailable) return;
-  try {
-    localStorage.setItem('viralGuideQState', JSON.stringify(qState));
-  } catch (err) {
-    practiceStorageAvailable = false;
-  }
-}
-function stats(){
- const vals=Object.values(qState).filter(x=>x.submitted);
- const correct=vals.filter(x=>x.correct).length;
- document.getElementById('sticky-score').textContent=`Practice: ${correct} / ${vals.length}`;
- return [correct,vals.length];
-}
-function renderQ(){
- const q=questions[qIndex], state=qState[qIndex]||{};
- const card=document.getElementById('question-card');
- let opts=q.options.map((o,i)=>`<button class="option ${state.selected===i?'selected':''}" data-i="${i}" ${state.submitted?'disabled':''}>${String.fromCharCode(65+i)}. ${o}</button>`).join('');
- card.innerHTML=`<div class="meta">Question ${qIndex+1} of ${questions.length}</div><h3>${q.stem}</h3>${opts}
- <div class="controls"><label>Confidence: <select id="confidence"><option value="">—</option><option>High</option><option>Medium</option><option>Low</option></select></label>
- <button class="btn primary" id="submit-q" ${state.selected===undefined||state.submitted?'disabled':''}>Submit answer</button></div>
- <div id="q-feedback"></div>`;
- document.getElementById('q-progress').textContent = `${Object.values(qState).filter(x=>x.submitted).length} answered · ${practiceStorageAvailable ? 'progress saves in this browser' : 'practice works normally; browser blocked local progress saving'}`;
- if(state.confidence) document.getElementById('confidence').value=state.confidence;
- document.getElementById('confidence').onchange=e=>{ qState[qIndex]=qState[qIndex]||{}; qState[qIndex].confidence=e.target.value; saveQ(); };
- document.querySelectorAll('.option').forEach(b=>b.onclick=()=>{ if(state.submitted)return; qState[qIndex]=qState[qIndex]||{}; qState[qIndex].selected=+b.dataset.i; saveQ(); renderQ(); });
- document.getElementById('submit-q').onclick=()=>{
-   const s=qState[qIndex]; s.submitted=true; s.correct=s.selected===q.answer; saveQ(); renderQ();
- };
- if(state.submitted){
-   const distract = q.distractors.map((x,i)=>`<li>${x}</li>`).join('');
-   document.getElementById('q-feedback').innerHTML=`<div class="result ${state.correct?'correct':'incorrect'}"><strong>${state.correct?'Correct':'Not quite'}</strong><br>
-   Your answer: ${String.fromCharCode(65+state.selected)}. ${q.options[state.selected]}<br>
-   Correct answer: <strong>${String.fromCharCode(65+q.answer)}. ${q.options[q.answer]}</strong></div>
-   <p><strong>Why it fits:</strong> ${q.why}</p><details><summary><strong>Why the other options fail</strong></summary><ul>${distr}</ul></details>
-   <div class="callout"><strong>Teaching takeaway:</strong> ${q.takeaway}</div><p class="meta"><strong>Source revealed after submission:</strong> ${q.source}</p>`;
- }
- stats();
-}
-document.getElementById('prev-q').onclick=()=>{qIndex=(qIndex-1+questions.length)%questions.length;renderQ()};
-document.getElementById('next-q').onclick=()=>{qIndex=(qIndex+1)%questions.length;renderQ()};
-document.getElementById('random-q').onclick=()=>{qIndex=Math.floor(Math.random()*questions.length);renderQ()};
-document.getElementById('missed-q').onclick=()=>{
-  const inds=questions.map((_,i)=>i).filter(i=>qState[i]?.submitted && (!qState[i].correct || qState[i].confidence==='Low' || qState[i].confidence==='Medium'));
-  if(inds.length){qIndex=inds[0];renderQ();} else alert('No missed or uncertain submitted questions yet.');
-};
-document.getElementById('reset-q').onclick=()=>{if(confirm('Reset all saved practice progress for this guide?')){qState={};saveQ();qIndex=0;renderQ();}};
-renderQ();
 </script>
+
+<script>
+(() => {
+  const cards = Array.from(document.querySelectorAll('.rebuilt-qcard'));
+  if (!cards.length) return;
+
+  let current = 0;
+  const status = document.getElementById('rebuilt-status');
+
+  function showQuestion(index, scroll=true) {
+    current = (index + cards.length) % cards.length;
+    cards.forEach((card, i) => card.classList.toggle('active', i === current));
+    if (scroll) {
+      const target = document.getElementById('practice');
+      if (target) target.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  }
+
+  function updateStatus() {
+    const answered = cards.filter(c => c.dataset.answered === '1');
+    const correct = answered.filter(c => c.dataset.wasCorrect === '1');
+    status.textContent = `${answered.length} answered · ${correct.length} correct`;
+    const sticky = document.getElementById('sticky-score');
+    if (sticky) sticky.textContent = `Practice: ${correct.length} / ${answered.length}`;
+  }
+
+  cards.forEach((card, cardIndex) => {
+    const radios = Array.from(card.querySelectorAll('input[type="radio"]'));
+    const submit = card.querySelector('.rebuilt-submit');
+    const confidence = card.querySelector('.rebuilt-confidence');
+    const feedback = card.querySelector('.rebuilt-feedback');
+    const verdict = card.querySelector('.rebuilt-verdict');
+    const inlineNext = card.querySelector('.rebuilt-next-inline');
+    const correctIndex = Number(card.dataset.correct);
+
+    radios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        if (card.dataset.answered !== '1') submit.disabled = false;
+      });
+    });
+
+    submit.addEventListener('click', () => {
+      const chosen = card.querySelector('input[type="radio"]:checked');
+      if (!chosen || card.dataset.answered === '1') return;
+
+      const selectedIndex = Number(chosen.value);
+      const wasCorrect = selectedIndex === correctIndex;
+
+      card.dataset.answered = '1';
+      card.dataset.wasCorrect = wasCorrect ? '1' : '0';
+
+      radios.forEach((radio, i) => {
+        radio.disabled = true;
+        const label = radio.closest('.rebuilt-option');
+        label.classList.add('locked');
+        if (i === correctIndex) label.classList.add('correct-answer');
+        if (i === selectedIndex && wasCorrect) label.classList.add('selected-correct');
+        if (i === selectedIndex && !wasCorrect) label.classList.add('selected-wrong');
+      });
+
+      submit.disabled = true;
+      confidence.disabled = true;
+
+      verdict.className = 'rebuilt-verdict ' + (wasCorrect ? 'is-correct' : 'is-wrong');
+      verdict.innerHTML = wasCorrect
+        ? '<strong>✓ Correct.</strong> Review the reasoning below before moving on.'
+        : '<strong>✗ Not quite.</strong> The correct answer and rationale are directly below.';
+
+      feedback.hidden = false;
+      updateStatus();
+
+      // Make the rationale impossible to miss after submitting.
+      requestAnimationFrame(() => {
+        feedback.scrollIntoView({behavior:'smooth', block:'center'});
+      });
+    });
+
+    inlineNext.addEventListener('click', () => showQuestion(cardIndex + 1));
+  });
+
+  document.getElementById('rebuilt-prev').addEventListener('click', () => showQuestion(current - 1));
+  document.getElementById('rebuilt-next').addEventListener('click', () => showQuestion(current + 1));
+  document.getElementById('rebuilt-random').addEventListener('click', () => {
+    let next = current;
+    if (cards.length > 1) {
+      while (next === current) next = Math.floor(Math.random() * cards.length);
+    }
+    showQuestion(next);
+  });
+
+  document.getElementById('rebuilt-review').addEventListener('click', () => {
+    const candidates = cards
+      .map((card, i) => ({card, i}))
+      .filter(x => {
+        const conf = x.card.querySelector('.rebuilt-confidence')?.value || '';
+        return x.card.dataset.answered === '1' &&
+          (x.card.dataset.wasCorrect !== '1' || conf === 'Low' || conf === 'Medium');
+      });
+
+    if (!candidates.length) {
+      status.textContent = 'No missed or uncertain answered questions yet.';
+      setTimeout(updateStatus, 1800);
+      return;
+    }
+
+    const afterCurrent = candidates.find(x => x.i > current) || candidates[0];
+    showQuestion(afterCurrent.i);
+  });
+
+  document.getElementById('rebuilt-reset').addEventListener('click', () => {
+    cards.forEach(card => {
+      card.dataset.answered = '0';
+      delete card.dataset.wasCorrect;
+
+      card.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.checked = false;
+        radio.disabled = false;
+      });
+
+      card.querySelectorAll('.rebuilt-option').forEach(label => {
+        label.classList.remove('locked','correct-answer','selected-wrong','selected-correct');
+      });
+
+      const submit = card.querySelector('.rebuilt-submit');
+      submit.disabled = true;
+
+      const conf = card.querySelector('.rebuilt-confidence');
+      conf.value = '';
+      conf.disabled = false;
+
+      const feedback = card.querySelector('.rebuilt-feedback');
+      feedback.hidden = true;
+
+      const verdict = card.querySelector('.rebuilt-verdict');
+      verdict.className = 'rebuilt-verdict';
+      verdict.textContent = '';
+    });
+
+    updateStatus();
+    showQuestion(0);
+  });
+
+  updateStatus();
+  showQuestion(0, false);
+})();
+</script>
+
 </body>
 </html>

@@ -387,8 +387,29 @@ document.querySelectorAll('.fig-reveal').forEach(b=>b.onclick=()=>{b.nextElement
 
 // Practice
 let qIndex=0;
-let qState = JSON.parse(localStorage.getItem('viralGuideQState')||'{}');
-function saveQ(){localStorage.setItem('viralGuideQState',JSON.stringify(qState));}
+// Practice progress works even when this downloaded HTML is opened from file://
+// and the browser blocks localStorage for local files.
+let practiceStorageAvailable = true;
+function loadQState(){
+  try {
+    const raw = window.localStorage ? localStorage.getItem('viralGuideQState') : null;
+    if (!raw) return {};
+    const parsed = JSON.parse(raw);
+    return (parsed && typeof parsed === 'object') ? parsed : {};
+  } catch (err) {
+    practiceStorageAvailable = false;
+    return {};
+  }
+}
+let qState = loadQState();
+function saveQ(){
+  if (!practiceStorageAvailable) return;
+  try {
+    localStorage.setItem('viralGuideQState', JSON.stringify(qState));
+  } catch (err) {
+    practiceStorageAvailable = false;
+  }
+}
 function stats(){
  const vals=Object.values(qState).filter(x=>x.submitted);
  const correct=vals.filter(x=>x.correct).length;
@@ -403,7 +424,7 @@ function renderQ(){
  <div class="controls"><label>Confidence: <select id="confidence"><option value="">—</option><option>High</option><option>Medium</option><option>Low</option></select></label>
  <button class="btn primary" id="submit-q" ${state.selected===undefined||state.submitted?'disabled':''}>Submit answer</button></div>
  <div id="q-feedback"></div>`;
- document.getElementById('q-progress').textContent=`${Object.values(qState).filter(x=>x.submitted).length} answered · progress saves in this browser`;
+ document.getElementById('q-progress').textContent = `${Object.values(qState).filter(x=>x.submitted).length} answered · ${practiceStorageAvailable ? 'progress saves in this browser' : 'practice works normally; browser blocked local progress saving'}`;
  if(state.confidence) document.getElementById('confidence').value=state.confidence;
  document.getElementById('confidence').onchange=e=>{ qState[qIndex]=qState[qIndex]||{}; qState[qIndex].confidence=e.target.value; saveQ(); };
  document.querySelectorAll('.option').forEach(b=>b.onclick=()=>{ if(state.submitted)return; qState[qIndex]=qState[qIndex]||{}; qState[qIndex].selected=+b.dataset.i; saveQ(); renderQ(); });
